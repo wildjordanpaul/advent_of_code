@@ -1,5 +1,6 @@
 package shared
 
+import kotlin.system.measureTimeMillis
 import kotlin.test.assertEquals
 
 abstract class AdventSolution(
@@ -30,9 +31,17 @@ abstract class AdventSolution(
 
         println("PASSED ALL TESTS: $passedTests")
 
-        if(!skip1)
-            println("Solution 1: ${solveProblem1(input1)}")
-        if(!skip2)
-            println("Solution 2: ${solveProblem2(input2)}")
+        if(!skip1) {
+            val ms = measureTimeMillis {
+                println("---\nSolution 1: ${solveProblem1(input1)}")
+            }
+            println("Solved in $ms ms")
+        }
+        if(!skip2) {
+            val ms = measureTimeMillis {
+                println("---\nSolution 2: ${solveProblem2(input2)}")
+            }
+            println("Solved in $ms ms")
+        }
     }
 }
