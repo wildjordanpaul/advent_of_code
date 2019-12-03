@@ -1,0 +1,98 @@
+package advent18
+
+import shared.AdventSolution
+
+fun main(args: Array<String>) = object : AdventSolution(
+    mapOf(
+        "position=< 9,  1> velocity=< 0,  2>\nposition=< 7,  0> velocity=<-1,  0>\nposition=< 3, -2> velocity=<-1,  1>\nposition=< 6, 10> velocity=<-2, -1>\nposition=< 2, -4> velocity=< 2,  2>\nposition=<-6, 10> velocity=< 2, -2>\nposition=< 1,  8> velocity=< 1, -1>\nposition=< 1,  7> velocity=< 1,  0>\nposition=<-3, 11> velocity=< 1, -2>\nposition=< 7,  6> velocity=<-1, -1>\nposition=<-2,  3> velocity=< 1,  0>\nposition=<-4,  3> velocity=< 2,  0>\nposition=<10, -3> velocity=<-1,  1>\nposition=< 5, 11> velocity=< 1, -2>\nposition=< 4,  7> velocity=< 0, -1>\nposition=< 8, -2> velocity=< 0,  1>\nposition=<15,  0> velocity=<-2,  0>\nposition=< 1,  6> velocity=< 1,  0>\nposition=< 8,  9> velocity=< 0, -1>\nposition=< 3,  3> velocity=<-1,  1>\nposition=< 0,  5> velocity=< 0, -1>\nposition=<-2,  2> velocity=< 2,  0>\nposition=< 5, -2> velocity=< 1,  2>\nposition=< 1,  4> velocity=< 2,  1>\nposition=<-2,  7> velocity=< 2, -2>\nposition=< 3,  6> velocity=<-1, -1>\nposition=< 5,  0> velocity=< 1,  0>\nposition=<-6,  0> velocity=< 2,  0>\nposition=< 5,  9> velocity=< 1, -2>\nposition=<14,  7> velocity=<-2,  0>\nposition=<-3,  6> velocity=< 2, -1>" to ""
+    ),
+    mapOf(
+
+    ),
+    "position=<-39892,  -9859> velocity=< 4,  1>\nposition=< 10130,  10163> velocity=<-1, -1>\nposition=<-49939,  50212> velocity=< 5, -5>\nposition=<-29877, -29885> velocity=< 3,  3>\nposition=< -9900, -39894> velocity=< 1,  4>\nposition=<-19858,  40201> velocity=< 2, -4>\nposition=< -9892, -19865> velocity=< 1,  2>\nposition=<-29863,  10163> velocity=< 3, -1>\nposition=<-29914, -49902> velocity=< 3,  5>\nposition=<-19854, -29876> velocity=< 2,  3>\nposition=<-49944, -39892> velocity=< 5,  4>\nposition=<-49912, -39890> velocity=< 5,  4>\nposition=<-39923,  50207> velocity=< 4, -5>\nposition=< 50199,  20174> velocity=<-5, -2>\nposition=< -9871,  30182> velocity=< 1, -3>\nposition=< 40215,  50206> velocity=<-4, -5>\nposition=<-49944,  30189> velocity=< 5, -3>\nposition=< 10140, -19865> velocity=<-1,  2>\nposition=<-49909,  10168> velocity=< 5, -1>\nposition=<-39923, -19874> velocity=< 4,  2>\nposition=< 50223,  -9863> velocity=<-5,  1>\nposition=<-19892, -29880> velocity=< 2,  3>\nposition=<-29894, -29881> velocity=< 3,  3>\nposition=< 10149,  20174> velocity=<-1, -2>\nposition=< -9876,  20171> velocity=< 1, -2>\nposition=< 20144, -29880> velocity=<-2,  3>\nposition=<-39873,  50206> velocity=< 4, -5>\nposition=< -9848,  20174> velocity=< 1, -2>\nposition=<-49915, -39894> velocity=< 5,  4>\nposition=< 20186, -39896> velocity=<-2,  4>\nposition=<-39913, -29877> velocity=< 4,  3>\nposition=< 30192, -49902> velocity=<-3,  5>\nposition=< -9864,  -9854> velocity=< 1,  1>\nposition=< -9863,  30184> velocity=< 1, -3>\nposition=<-49887, -49898> velocity=< 5,  5>\nposition=<-49909, -29876> velocity=< 5,  3>\nposition=< -9876,  40199> velocity=< 1, -4>\nposition=< 20185,  40196> velocity=<-2, -4>\nposition=< 30203,  20179> velocity=<-3, -2>\nposition=< 50206,  20170> velocity=<-5, -2>\nposition=< 40157,  10168> velocity=<-4, -1>\nposition=<-29922,  40200> velocity=< 3, -4>\nposition=< 10167,  20172> velocity=<-1, -2>\nposition=< 20141,  10165> velocity=<-2, -1>\nposition=< -9851,  10163> velocity=< 1, -1>\nposition=< 10163,  50207> velocity=<-1, -5>\nposition=< -9900,  20179> velocity=< 1, -2>\nposition=< 50211,  10160> velocity=<-5, -1>\nposition=< 50200, -19870> velocity=<-5,  2>\nposition=<-19863, -39887> velocity=< 2,  4>\nposition=< 40203, -29878> velocity=<-4,  3>\nposition=< 20145, -49903> velocity=<-2,  5>\nposition=< 10162,  -9856> velocity=<-1,  1>\nposition=< 10138,  30189> velocity=<-1, -3>\nposition=< 30189,  -9859> velocity=<-3,  1>\nposition=< 20170,  40198> velocity=<-2, -4>\nposition=< 20183, -49907> velocity=<-2,  5>\nposition=< 20184, -39892> velocity=<-2,  4>\nposition=< 30157,  20172> velocity=<-3, -2>\nposition=<-49936,  10168> velocity=< 5, -1>\nposition=< 40200,  -9859> velocity=<-4,  1>\nposition=< 50190,  -9862> velocity=<-5,  1>\nposition=<-29894,  20170> velocity=< 3, -2>\nposition=< 20178,  20171> velocity=<-2, -2>\nposition=<-49928,  30184> velocity=< 5, -3>\nposition=< 40188,  10163> velocity=<-4, -1>\nposition=< 40171, -49904> velocity=<-4,  5>\nposition=<-39925, -49905> velocity=< 4,  5>\nposition=< 20170,  -9857> velocity=<-2,  1>\nposition=<-49896,  20175> velocity=< 5, -2>\nposition=< 10162,  10161> velocity=<-1, -1>\nposition=< 30202,  50208> velocity=<-3, -5>\nposition=< 20137,  10168> velocity=<-2, -1>\nposition=< -9860,  50209> velocity=< 1, -5>\nposition=< 50193, -39896> velocity=<-5,  4>\nposition=<-19902,  20170> velocity=< 2, -2>\nposition=< 10170,  50209> velocity=<-1, -5>\nposition=< 40174,  40197> velocity=<-4, -4>\nposition=< -9839, -49906> velocity=< 1,  5>\nposition=<-49893, -49907> velocity=< 5,  5>\nposition=< 30177,  40201> velocity=<-3, -4>\nposition=< -9841, -39892> velocity=< 1,  4>\nposition=< 40192,  10166> velocity=<-4, -1>\nposition=< 40214, -19865> velocity=<-4,  2>\nposition=< 30160,  30182> velocity=<-3, -3>\nposition=< 30160,  40200> velocity=<-3, -4>\nposition=< 40191,  30181> velocity=<-4, -3>\nposition=< 10154,  50207> velocity=<-1, -5>\nposition=<-29877, -49902> velocity=< 3,  5>\nposition=<-39909,  30184> velocity=< 4, -3>\nposition=<-39872,  30183> velocity=< 4, -3>\nposition=< 40208,  40192> velocity=<-4, -4>\nposition=<-29922,  -9856> velocity=< 3,  1>\nposition=< 20150,  -9863> velocity=<-2,  1>\nposition=<-49920,  20175> velocity=< 5, -2>\nposition=< 40214, -19874> velocity=<-4,  2>\nposition=<-49904, -49898> velocity=< 5,  5>\nposition=< 30144,  -9863> velocity=<-3,  1>\nposition=< 30204,  30181> velocity=<-3, -3>\nposition=< 30189,  -9863> velocity=<-3,  1>\nposition=<-49944, -49900> velocity=< 5,  5>\nposition=< 30145,  20179> velocity=<-3, -2>\nposition=< 40182, -49903> velocity=<-4,  5>\nposition=< 40180, -29885> velocity=<-4,  3>\nposition=< 30152,  10167> velocity=<-3, -1>\nposition=<-29909, -39887> velocity=< 3,  4>\nposition=< 50178,  20177> velocity=<-5, -2>\nposition=< -9868,  20171> velocity=< 1, -2>\nposition=<-19895,  20177> velocity=< 2, -2>\nposition=< 50214,  -9862> velocity=<-5,  1>\nposition=<-29906, -39893> velocity=< 3,  4>\nposition=< 10183,  40194> velocity=<-1, -4>\nposition=< 20149, -49903> velocity=<-2,  5>\nposition=< 10180, -19874> velocity=<-1,  2>\nposition=< 30168, -19866> velocity=<-3,  2>\nposition=<-39891, -39892> velocity=< 4,  4>\nposition=< 20161, -49907> velocity=<-2,  5>\nposition=< 40192, -19869> velocity=<-4,  2>\nposition=<-49944, -39890> velocity=< 5,  4>\nposition=< -9888,  30181> velocity=< 1, -3>\nposition=<-39896, -19873> velocity=< 4,  2>\nposition=<-39916, -29885> velocity=< 4,  3>\nposition=< 50178, -49901> velocity=<-5,  5>\nposition=< 10138, -19870> velocity=<-1,  2>\nposition=< 40205, -29881> velocity=<-4,  3>\nposition=<-19853,  -9858> velocity=< 2,  1>\nposition=<-19899, -29885> velocity=< 2,  3>\nposition=<-49923,  20176> velocity=< 5, -2>\nposition=< 40206,  40201> velocity=<-4, -4>\nposition=<-39875, -49898> velocity=< 4,  5>\nposition=<-29910,  50207> velocity=< 3, -5>\nposition=< 10174, -39896> velocity=<-1,  4>\nposition=< 30156,  30188> velocity=<-3, -3>\nposition=< 40211,  30190> velocity=<-4, -3>\nposition=< -9848,  40201> velocity=< 1, -4>\nposition=< 30189, -19872> velocity=<-3,  2>\nposition=< -9876, -39887> velocity=< 1,  4>\nposition=< 10130, -49900> velocity=<-1,  5>\nposition=< 30194,  -9859> velocity=<-3,  1>\nposition=<-39920,  20173> velocity=< 4, -2>\nposition=< 40176,  10167> velocity=<-4, -1>\nposition=< 50222,  -9855> velocity=<-5,  1>\nposition=<-49923, -29884> velocity=< 5,  3>\nposition=< 40172,  30190> velocity=<-4, -3>\nposition=<-39885, -29882> velocity=< 4,  3>\nposition=< 20141, -19870> velocity=<-2,  2>\nposition=<-49884, -29885> velocity=< 5,  3>\nposition=<-49923,  20178> velocity=< 5, -2>\nposition=< 40181,  20174> velocity=<-4, -2>\nposition=< -9852,  -9862> velocity=< 1,  1>\nposition=< 10165, -39892> velocity=<-1,  4>\nposition=< -9852, -19874> velocity=< 1,  2>\nposition=< 50214, -29880> velocity=<-5,  3>\nposition=< 40188,  40201> velocity=<-4, -4>\nposition=< -9852,  40198> velocity=< 1, -4>\nposition=<-29894, -39892> velocity=< 3,  4>\nposition=< 50199,  10159> velocity=<-5, -1>\nposition=< 40200,  50209> velocity=<-4, -5>\nposition=< 30189, -49906> velocity=<-3,  5>\nposition=< 20141, -19869> velocity=<-2,  2>\nposition=<-49912,  10165> velocity=< 5, -1>\nposition=< 30176, -19865> velocity=<-3,  2>\nposition=< 30157,  10161> velocity=<-3, -1>\nposition=< 40168,  10167> velocity=<-4, -1>\nposition=< 40215,  20173> velocity=<-4, -2>\nposition=< 10150, -49903> velocity=<-1,  5>\nposition=<-49944,  30189> velocity=< 5, -3>\nposition=< 50226,  40201> velocity=<-5, -4>\nposition=<-19911,  -9862> velocity=< 2,  1>\nposition=< 20146, -39888> velocity=<-2,  4>\nposition=< -9868, -29876> velocity=< 1,  3>\nposition=< -9879,  40201> velocity=< 1, -4>\nposition=<-19854,  -9863> velocity=< 2,  1>\nposition=< 40195,  30186> velocity=<-4, -3>\nposition=< 40195,  -9856> velocity=<-4,  1>\nposition=< 10131, -39892> velocity=<-1,  4>\nposition=< -9880,  30186> velocity=< 1, -3>\nposition=< -9884,  30187> velocity=< 1, -3>\nposition=< 20170,  30182> velocity=<-2, -3>\nposition=<-39922,  20170> velocity=< 4, -2>\nposition=<-39907, -29885> velocity=< 4,  3>\nposition=< 20150,  -9854> velocity=<-2,  1>\nposition=< 40200, -39888> velocity=<-4,  4>\nposition=< 20149,  -9856> velocity=<-2,  1>\nposition=< 30168,  50209> velocity=<-3, -5>\nposition=<-39874,  10159> velocity=< 4, -1>\nposition=< 50174, -29884> velocity=<-5,  3>\nposition=<-49944,  -9862> velocity=< 5,  1>\nposition=< 20141, -49901> velocity=<-2,  5>\nposition=< 10155,  50203> velocity=<-1, -5>\nposition=<-29881,  40196> velocity=< 3, -4>\nposition=<-19854,  20170> velocity=< 2, -2>\nposition=< -9895, -49898> velocity=< 1,  5>\nposition=< 40200,  10166> velocity=<-4, -1>\nposition=< 20157,  50205> velocity=<-2, -5>\nposition=<-19876, -39887> velocity=< 2,  4>\nposition=<-49904,  20178> velocity=< 5, -2>\nposition=<-29922, -19871> velocity=< 3,  2>\nposition=< 50214,  30181> velocity=<-5, -3>\nposition=< 40173,  40192> velocity=<-4, -4>\nposition=< 40211, -29876> velocity=<-4,  3>\nposition=<-19860,  10163> velocity=< 2, -1>\nposition=< 30197,  40192> velocity=<-3, -4>\nposition=< 40200, -49898> velocity=<-4,  5>\nposition=<-19852, -39896> velocity=< 2,  4>\nposition=<-29874,  10167> velocity=< 3, -1>\nposition=<-39889,  10163> velocity=< 4, -1>\nposition=<-49899, -19871> velocity=< 5,  2>\nposition=< 50190,  10159> velocity=<-5, -1>\nposition=< 30205,  10168> velocity=<-3, -1>\nposition=<-39889, -39892> velocity=< 4,  4>\nposition=<-39874,  30190> velocity=< 4, -3>\nposition=< 20176, -19870> velocity=<-2,  2>\nposition=<-39888,  50203> velocity=< 4, -5>\nposition=<-29898, -39895> velocity=< 3,  4>\nposition=< -9849, -49907> velocity=< 1,  5>\nposition=< -9864, -49903> velocity=< 1,  5>\nposition=< 50174,  10163> velocity=<-5, -1>\nposition=< 40166, -49902> velocity=<-4,  5>\nposition=< -9879,  10166> velocity=< 1, -1>\nposition=< 30152,  -9855> velocity=<-3,  1>\nposition=< 40187, -49907> velocity=<-4,  5>\nposition=< 30171, -29881> velocity=<-3,  3>\nposition=<-19900,  20175> velocity=< 2, -2>\nposition=<-29906,  -9857> velocity=< 3,  1>\nposition=< 40171, -19870> velocity=<-4,  2>\nposition=< 50201, -29885> velocity=<-5,  3>\nposition=<-49944,  30182> velocity=< 5, -3>\nposition=<-49883,  -9862> velocity=< 5,  1>\nposition=< 50174,  50206> velocity=<-5, -5>\nposition=<-29877, -19867> velocity=< 3,  2>\nposition=< 50190, -19870> velocity=<-5,  2>\nposition=< -9871,  30184> velocity=< 1, -3>\nposition=< -9897, -39887> velocity=< 1,  4>\nposition=<-19869,  -9859> velocity=< 2,  1>\nposition=< 40174,  30190> velocity=<-4, -3>\nposition=< 10126,  40201> velocity=<-1, -4>\nposition=<-49886,  20170> velocity=< 5, -2>\nposition=<-39884, -19865> velocity=< 4,  2>\nposition=< 10135, -29882> velocity=<-1,  3>\nposition=< 50202,  10168> velocity=<-5, -1>\nposition=< 40155,  30186> velocity=<-4, -3>\nposition=< 40181,  40192> velocity=<-4, -4>\nposition=< -9860,  40201> velocity=< 1, -4>\nposition=< 30178,  20179> velocity=<-3, -2>\nposition=< 10173,  50207> velocity=<-1, -5>\nposition=< 40187, -49900> velocity=<-4,  5>\nposition=< 10170,  20172> velocity=<-1, -2>\nposition=< -9892, -19874> velocity=< 1,  2>\nposition=<-19907, -39887> velocity=< 2,  4>\nposition=< 30184,  10168> velocity=<-3, -1>\nposition=< 30181,  50209> velocity=<-3, -5>\nposition=< 20145, -39892> velocity=<-2,  4>\nposition=<-19882,  30183> velocity=< 2, -3>\nposition=< -9863,  -9855> velocity=< 1,  1>\nposition=< 50191,  40196> velocity=<-5, -4>\nposition=<-39888, -49902> velocity=< 4,  5>\nposition=<-39933, -29885> velocity=< 4,  3>\nposition=<-39920, -19871> velocity=< 4,  2>\nposition=< 10178, -39889> velocity=<-1,  4>\nposition=<-29874,  30190> velocity=< 3, -3>\nposition=<-19853, -19869> velocity=< 2,  2>\nposition=< 20170, -49900> velocity=<-2,  5>\nposition=<-29889,  10163> velocity=< 3, -1>\nposition=<-29906,  20178> velocity=< 3, -2>\nposition=< 40179,  50207> velocity=<-4, -5>\nposition=<-49888, -19865> velocity=< 5,  2>\nposition=<-29874, -49901> velocity=< 3,  5>\nposition=<-49904, -39892> velocity=< 5,  4>\nposition=< 50185,  40201> velocity=<-5, -4>\nposition=<-19863, -49900> velocity=< 2,  5>\nposition=< 40180,  20170> velocity=<-4, -2>\nposition=< -9884,  40194> velocity=< 1, -4>\nposition=< 30168,  -9858> velocity=<-3,  1>\nposition=< 30164,  -9863> velocity=<-3,  1>\nposition=<-49936,  10159> velocity=< 5, -1>\nposition=<-49904, -19871> velocity=< 5,  2>\nposition=< 30165,  30189> velocity=<-3, -3>\nposition=<-49888,  20170> velocity=< 5, -2>\nposition=< 20169,  50207> velocity=<-2, -5>\nposition=< 50177,  40196> velocity=<-5, -4>\nposition=<-19911, -19871> velocity=< 2,  2>\nposition=< 30204,  40192> velocity=<-3, -4>\nposition=<-19871, -19870> velocity=< 2,  2>\nposition=< -9884,  40197> velocity=< 1, -4>\nposition=< 40187,  50206> velocity=<-4, -5>\nposition=< 40179,  40192> velocity=<-4, -4>\nposition=< 20133, -29885> velocity=<-2,  3>\nposition=< 40192,  10166> velocity=<-4, -1>\nposition=<-39915,  -9854> velocity=< 4,  1>\nposition=< 50175, -49903> velocity=<-5,  5>\nposition=<-29874,  20177> velocity=< 3, -2>\nposition=<-19863,  -9859> velocity=< 2,  1>\nposition=<-49912,  -9861> velocity=< 5,  1>\nposition=<-49912, -39893> velocity=< 5,  4>\nposition=< 10174, -49903> velocity=<-1,  5>\nposition=<-39875,  10168> velocity=< 4, -1>\nposition=< -9864, -39887> velocity=< 1,  4>\nposition=<-39884,  30181> velocity=< 4, -3>\nposition=<-19895,  10161> velocity=< 2, -1>\nposition=<-29890,  40200> velocity=< 3, -4>\nposition=< 40168, -19866> velocity=<-4,  2>\nposition=<-19882,  10160> velocity=< 2, -1>\nposition=< 30155, -29885> velocity=<-3,  3>\nposition=< 20157,  40197> velocity=<-2, -4>\nposition=<-19892, -39891> velocity=< 2,  4>\nposition=< 50185, -19874> velocity=<-5,  2>\nposition=< 40184, -29883> velocity=<-4,  3>\nposition=< 40205, -29876> velocity=<-4,  3>\nposition=< 20133,  10163> velocity=<-2, -1>\nposition=< 10143, -49906> velocity=<-1,  5>\nposition=<-29861, -39896> velocity=< 3,  4>\nposition=< 20170,  20172> velocity=<-2, -2>\nposition=< 30184, -39896> velocity=<-3,  4>\nposition=<-19903,  40194> velocity=< 2, -4>\nposition=< 10147, -19870> velocity=<-1,  2>\nposition=< 10138,  10166> velocity=<-1, -1>\nposition=< 30193,  30181> velocity=<-3, -3>\nposition=<-39875, -39896> velocity=< 4,  4>\nposition=< 10170, -19871> velocity=<-1,  2>\nposition=<-39888,  20178> velocity=< 4, -2>\nposition=< 40155,  40197> velocity=<-4, -4>\nposition=<-19886, -49903> velocity=< 2,  5>\nposition=<-49932, -49901> velocity=< 5,  5>\nposition=< 20145,  40192> velocity=<-2, -4>\nposition=< 50206, -49906> velocity=<-5,  5>\nposition=< 30201, -29879> velocity=<-3,  3>\nposition=< 10135, -39895> velocity=<-1,  4>\nposition=<-29890, -19872> velocity=< 3,  2>\nposition=<-29901, -19869> velocity=< 3,  2>\nposition=< -9879,  -9857> velocity=< 1,  1>\nposition=< 50190, -19871> velocity=<-5,  2>\nposition=< 10170, -29885> velocity=<-1,  3>\nposition=< 40192, -39895> velocity=<-4,  4>\nposition=<-19879,  10164> velocity=< 2, -1>\nposition=<-19898, -19865> velocity=< 2,  2>\nposition=<-49910,  -9863> velocity=< 5,  1>\nposition=< 40200,  10165> velocity=<-4, -1>\nposition=< 50206,  10166> velocity=<-5, -1>\nposition=<-19863, -19872> velocity=< 2,  2>\nposition=< 40192, -49905> velocity=<-4,  5>\nposition=< 50201,  30185> velocity=<-5, -3>\nposition=<-49910, -39892> velocity=< 5,  4>\nposition=< 30195, -19865> velocity=<-3,  2>\nposition=< 20189, -29878> velocity=<-2,  3>\nposition=<-39922,  20170> velocity=< 4, -2>\nposition=< -9856, -19870> velocity=< 1,  2>\nposition=<-49883,  30181> velocity=< 5, -3>\nposition=<-29877,  10163> velocity=< 3, -1>\nposition=< 30192,  20171> velocity=<-3, -2>\nposition=< 20191, -29876> velocity=<-2,  3>\nposition=< 40192,  50206> velocity=<-4, -5>\nposition=<-49891, -29876> velocity=< 5,  3>\nposition=< 50174,  -9857> velocity=<-5,  1>\nposition=<-49904,  -9862> velocity=< 5,  1>\nposition=< -9860,  -9862> velocity=< 1,  1>"
+) {
+
+    private fun String.toPoint(): D10Point {
+        val (i1, i2, i3, i4) = """position=<\s*(-?\d+),\s*(-?\d+)> velocity=<\s*(-?\d+),\s*(-?\d+)>""".toRegex().find(this)!!.destructured
+        return D10Point(
+            i1.toInt(),
+            i2.toInt(),
+            i3.toInt(),
+            i4.toInt()
+        )
+    }
+
+    private fun List<D10Point>.print() {
+        val minX = minBy { it.x }!!.x
+        val minY = minBy { it.y }!!.y
+        val maxX = maxBy { it.x }!!.x
+        val maxY = maxBy { it.y }!!.y
+        val currentPoints = map(D10Point::xy).toSet()
+        (minY..maxY).forEach { y ->
+            (minX..maxX).forEach { x ->
+                print(if (currentPoints.contains("$x,$y")) '#' else '.')
+            }
+            println()
+        }
+    }
+
+    override fun solveProblem1(input: String): String {
+        val points = input.split("\n").map { it.toPoint() }
+
+        var iteration = 0
+        var lastX = 0
+        var lastY = 0
+        var dX = 100
+        var dY = 100
+        while(true) {
+            points.forEach(D10Point::move)
+            iteration += 1
+
+            val minX = points.minBy { it.x }!!.x
+            val minY = points.minBy { it.y }!!.y
+            val maxX = points.maxBy { it.x }!!.x
+            val maxY = points.maxBy { it.y }!!.y
+            val newDX = (maxX-minX) - lastX
+            val newDY = (maxY-minY) - lastY
+            println("Iteration $iteration --> dx: $newDX, dy: $newDY")
+
+            if(newDX >= 0 && dX <= 0 && newDY >=0 && dY <=0) {
+                points.forEach(D10Point::moveBack)
+                points.print()
+                return ""
+            }
+
+            dX = newDX
+            dY = newDY
+            lastX = (maxX-minX)
+            lastY = (maxY-minY)
+        }
+    }
+
+    override fun solveProblem2(input: String): String {
+        return ""
+    }
+
+}.solve()
+
+data class D10Point(
+    val iX: Int,
+    val iY: Int,
+    val vX: Int,
+    val vY: Int,
+    var x: Int = iX,
+    var y: Int = iY
+) {
+    fun move() {
+        x += vX
+        y += vY
+    }
+
+    fun moveBack() {
+        x -= vX
+        y -= vY
+    }
+
+    val xy: String
+        get() = "$x,$y"
+}

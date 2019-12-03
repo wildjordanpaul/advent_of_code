@@ -1,0 +1,14 @@
+.gradle
+gradle.properties
+local.properties
+build/*
+out/*
+*/build/*
+*/gen/*
+libraries/*/build/*
+captures/*
+node_modules/
+reports/*
+.DS_Store
+.idea
+*.iml
