@@ -16,14 +16,14 @@ abstract class AdventSolution(
     fun solve(skip1: Boolean = false, skip2: Boolean = false) {
         var passedTests = 0
         if(!skip1) {
-            testCases1.forEach { input, output ->
+            testCases1.forEach { (input, output) ->
                 assertEquals(output.toString(), solveProblem1(input).toString())
                 passedTests++
             }
         }
 
         if(!skip2) {
-            testCases2.forEach { input, output ->
+            testCases2.forEach { (input, output) ->
                 assertEquals(output.toString(), solveProblem2(input).toString())
                 passedTests++
             }
