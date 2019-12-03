@@ -23,10 +23,10 @@ data class Point(val x: Int, val y: Int) {
 
     fun navigate(char: Char): Point {
         return when(char.toUpperCase()) {
-            'N' -> above()
-            'S' -> below()
-            'W' -> left()
-            'E' -> right()
+            'N','U' -> above()
+            'S','D' -> below()
+            'W','L' -> left()
+            'E','R' -> right()
             else -> this
         }
     }

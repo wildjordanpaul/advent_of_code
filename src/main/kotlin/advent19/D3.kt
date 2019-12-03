@@ -42,13 +42,7 @@ fun main(args: Array<String>) = object : AdventSolution(
                 val length = path.substring(1).toInt()
                 repeat(length) {
                     grid.setPolarity(p, step, polarity)
-                    p = when(val direction = path.first()) {
-                        'R' -> p.right()
-                        'L' -> p.left()
-                        'D' -> p.below()
-                        'U' -> p.above()
-                        else -> throw RuntimeException("Illegal direction: $direction")
-                    }
+                    p = p.navigate(path.first())
                     step++
                 }
             }
