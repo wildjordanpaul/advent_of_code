@@ -1,6 +1,4 @@
-package advent18
-
-import shared.AdventSolution
+package shared
 
 fun main(args: Array<String>) = object : AdventSolution(
         mapOf(
