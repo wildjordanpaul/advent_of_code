@@ -34,7 +34,7 @@ fun main(args: Array<String>) = object : AdventSolution(
     private fun CharArray.hasAdjacentDuplication(pairsOnly: Boolean = false): Boolean {
         var current: Char? = null
         var last: Char? = null
-        val iter = asList().listIterator()
+        val iter = iterator()
         while(iter.hasNext()) {
             current = iter.next()
             last = if(current == last) {
