@@ -2,7 +2,7 @@ package advent19
 
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+class D4 : AdventSolution(
     mapOf(
 
     ),
@@ -51,6 +51,4 @@ fun main(args: Array<String>) = object : AdventSolution(
         return false
     }
 
-
-
-}.solve()
+}

@@ -4,7 +4,7 @@ import shared.AdventSolution
 import shared.forEachPair
 import shared.splitInts
 
-fun main(args: Array<String>) = object : AdventSolution(
+class D2 : AdventSolution(
     mapOf(
         "1,9,10,3,2,3,11,0,99,30,40,50" to "3500,9,10,70,2,3,11,0,99,30,40,50",
         "1,0,0,0,99" to "2,0,0,0,99",
@@ -68,4 +68,4 @@ fun main(args: Array<String>) = object : AdventSolution(
         }
     }
 
-}.solve()
+}

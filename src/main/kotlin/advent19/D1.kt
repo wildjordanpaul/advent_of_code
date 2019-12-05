@@ -4,7 +4,7 @@ import shared.AdventSolution
 import shared.splitDoubles
 import kotlin.math.floor
 
-fun main(args: Array<String>) = object : AdventSolution(
+class D1 : AdventSolution(
     mapOf(
         "12" to 2,
         "14" to 2,
@@ -29,7 +29,7 @@ fun main(args: Array<String>) = object : AdventSolution(
             .map { mass ->
                 var totalFuelNeeded = 0
                 var fuelToAdd = mass.requiredFuel()
-                while(fuelToAdd > 0) {
+                while (fuelToAdd > 0) {
                     totalFuelNeeded += fuelToAdd
                     fuelToAdd = fuelToAdd.requiredFuel()
                 }
@@ -42,4 +42,4 @@ fun main(args: Array<String>) = object : AdventSolution(
     private fun Double.requiredFuel() = div(3).floor().toInt() - 2
     private fun Double.floor() = floor(this)
 
-}.solve()
+}

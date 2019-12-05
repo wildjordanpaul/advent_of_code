@@ -3,7 +3,7 @@ package advent19
 import shared.*
 import java.lang.RuntimeException
 
-fun main(args: Array<String>) = object : AdventSolution(
+class D3 : AdventSolution(
     mapOf(
         "R8,U5,L5,D3\nU7,R6,D4,L4" to 6,
         "R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83" to 159,
@@ -78,6 +78,6 @@ fun main(args: Array<String>) = object : AdventSolution(
 
 
 
-}.solve()
+}
 
 data class Polarity(val polarFlag: Boolean?, val totalSteps: Int = 0)

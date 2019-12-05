@@ -2,7 +2,7 @@ package advent19
 
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+class D4Try2 : AdventSolution(
     mapOf(),
     mapOf(),
     "382345-843167"
@@ -27,4 +27,4 @@ fun main(args: Array<String>) = object : AdventSolution(
         return groupBy { it }.values.any { if(pairsOnly) it.size == 2 else it.size > 1 }
     }
 
-}.solve()
+}
