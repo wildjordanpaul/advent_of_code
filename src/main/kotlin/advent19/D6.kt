@@ -25,11 +25,10 @@ class D6 : AdventSolution(
     }
 
     override fun solveProblem2(input: String): Any? {
-        val map = mutableMapOf<String, String>()
-        input.split(",").forEach {
+        val map = input.split(",").map {
             val (k,v) = it.splitInTwo(")")
-            map[v] = k
-        }
+            v to k
+        }.toMap()
 
         val youPath = map.path("YOU")
         val sanPath = map.path("SAN")
