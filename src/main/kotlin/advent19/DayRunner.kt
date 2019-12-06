@@ -1,5 +1,5 @@
 package advent19
 
 fun main() {
-    D5().solve()
+    D6().solve()
 }

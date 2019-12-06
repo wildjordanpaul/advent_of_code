@@ -13,3 +13,8 @@ fun String.splitDoubles(delimiter: String = ",") = split(delimiter).map(String::
 
 fun Iterable<Point>.rangeX() = (minBy(Point::x)?.x ?: 0)..(maxBy(Point::x)?.x ?: 0)
 fun Iterable<Point>.rangeY() = (minBy(Point::y)?.y ?: 0)..(maxBy(Point::y)?.y ?: 0)
+
+fun String.splitInTwo(delimiter: String = ","): Pair<String,String> {
+    val pieces = split(delimiter, limit=2)
+    return Pair(pieces.first(), pieces.last())
+}
