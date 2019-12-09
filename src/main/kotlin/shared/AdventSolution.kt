@@ -14,6 +14,8 @@ abstract class AdventSolution(
     abstract fun solveProblem2(input: String): Any?
 
     fun solve(skip1: Boolean = false, skip2: Boolean = false) {
+        println("RUNNING ${this.javaClass.name}")
+
         var passedTests = 0
         if(!skip1) {
             testCases1.forEach { (input, output) ->
