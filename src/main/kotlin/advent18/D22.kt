@@ -4,7 +4,7 @@ import shared.AdventSolution
 import shared.Point
 import java.math.BigInteger
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
             "510 10 10" to "114"
         ),

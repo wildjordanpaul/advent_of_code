@@ -2,7 +2,7 @@ package advent18
 
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
             """
                 initial state: #..#.#..##......###...###

@@ -4,7 +4,7 @@ import shared.AdventSolution
 import java.math.BigInteger
 import java.util.*
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
     mapOf(
         "9 players; last marble is worth 25 points" to "32",
         "10 players; last marble is worth 1618 points" to "8317",

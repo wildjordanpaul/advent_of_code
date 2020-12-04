@@ -2,7 +2,7 @@ package advent18
 
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
                 "+1, +1, +1" to 3,
                 "+1, +1, -2" to 0,

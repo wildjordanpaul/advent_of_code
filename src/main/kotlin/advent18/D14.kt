@@ -2,7 +2,7 @@ package advent18
 
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
             "9" to "5158916779",
             "5" to "0124515891",

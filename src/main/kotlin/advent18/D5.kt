@@ -6,7 +6,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
                 "dabAcCaCBAcCcaDA" to "10"
         ),

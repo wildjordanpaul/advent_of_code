@@ -3,7 +3,7 @@ package advent18
 import shared.AdventSolution
 import java.lang.Integer.max
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
     mapOf(
         "18" to "33,45",
         "42" to "21,61"

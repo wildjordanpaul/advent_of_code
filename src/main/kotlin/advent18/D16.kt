@@ -3,7 +3,7 @@ package advent18
 import advent18.model18.Instruction
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(),
         mapOf(),
         """

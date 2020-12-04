@@ -5,7 +5,7 @@ import shared.Point
 import java.util.*
 import kotlin.math.min
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
             """^WNE$""" to "3",
             """^ENWWW(NEEE|SSE(EE|N))$""" to "10",

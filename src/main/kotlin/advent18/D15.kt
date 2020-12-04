@@ -3,7 +3,7 @@ package advent18
 import shared.AdventSolution
 import shared.Point
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
             """
                 #######

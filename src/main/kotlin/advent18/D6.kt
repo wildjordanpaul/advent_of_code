@@ -9,7 +9,7 @@ data class D6Point(
     val y: Int
 )
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
     mapOf(
         "1, 1\n1, 6\n8, 3\n3, 4\n5, 5\n8, 9" to "E: 5, 5 = 17"
     ),

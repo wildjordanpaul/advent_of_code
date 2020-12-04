@@ -1,13 +1,13 @@
 buildscript {
-    ext.kotlin_version = '1.3.0'
+    ext.kotlin_version = '1.4.20'
 }
 
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.20'
 }
 
 group 'software.wild'
-version '1.0-SNAPSHOT'
+version '3.0-SNAPSHOT'
 
 apply plugin: 'java'
 
@@ -19,10 +19,9 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile 'org.jetbrains.kotlin:kotlin-test:1.1.51'
-    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
-    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1'
-    compile 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    compile 'org.jetbrains.kotlin:kotlin-test:1.4.20'
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.8'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 

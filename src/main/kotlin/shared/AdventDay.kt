@@ -1,6 +1,6 @@
 package shared
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
         ),
         mapOf(

@@ -2,7 +2,7 @@ package advent18
 
 import shared.AdventSolution
 
-fun main(args: Array<String>) = object : AdventSolution(
+fun main() = object : AdventSolution(
         mapOf(
                 "abcdef,bababc,abbcde,abcccd,aabcdd,abcdee,ababab" to "4 * 3 = 12"
         ),
