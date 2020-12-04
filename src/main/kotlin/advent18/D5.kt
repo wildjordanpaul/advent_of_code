@@ -41,7 +41,7 @@ fun main() = object : AdventSolution(
             ('a'..'z')
                 .map { c -> input.reactToAsync(c) }
                 .map{ it.await() }
-                .minBy { it.length }
+                .minByOrNull { it.length }
                 ?.length.toString()
         }
     }

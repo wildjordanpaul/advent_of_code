@@ -226,7 +226,7 @@ fun main() = object : AdventSolution(
                 fun getBestTarget(): D15Unit? {
                     return unit.adjacentPoints
                         .mapNotNull { targets[it] }
-                        .minWith(compareBy({ it.hp }, { it.startingY }, { it.startingX }))
+                        .minWithOrNull(compareBy({ it.hp }, { it.startingY }, { it.startingX }))
                 }
 
                 var bestImmediateTarget = getBestTarget()
@@ -238,7 +238,7 @@ fun main() = object : AdventSolution(
                             .map { unit2 to D15Directions(it, unit.point.shortestPathTo(it, openSpaces)) }
                             .filter { it.second.paths.isNotEmpty() }
                         }
-                        .minWith(compareBy(
+                        .minWithOrNull(compareBy(
                             { it.second.distance },
                             { it.second.y },
                             { it.second.x }

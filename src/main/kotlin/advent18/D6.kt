@@ -33,14 +33,14 @@ fun main() = object : AdventSolution(
         val grid = input.toGrid()
         val xs = grid.map { it.x }
         val ys = grid.map { it.y }
-        val invalidX = listOf( xs.min(), xs.max() )
-        val invalidY = listOf( ys.min(), ys.max() )
+        val invalidX = listOf( xs.minOrNull(), xs.maxOrNull() )
+        val invalidY = listOf( ys.minOrNull(), ys.maxOrNull() )
         val counter = mutableMapOf<D6Point, Int>()
         val invalidIDs = mutableSetOf<Char>()
-        (ys.min()!! .. ys.max()!!).forEach { y ->
-            (xs.min()!! .. xs.max()!!).forEach { x ->
+        (ys.minOrNull()!! .. ys.maxOrNull()!!).forEach { y ->
+            (xs.minOrNull()!! .. xs.maxOrNull()!!).forEach { x ->
                 val distances = grid.map { p -> p to abs(p.x-x) + abs(p.y-y) }.toMap()
-                val minDistance = distances.minBy { it.value }!!.value
+                val minDistance = distances.minByOrNull { it.value }!!.value
                 val minDistances = distances.filter { it.value == minDistance }
                 if(minDistances.size == 1) {
                     val point = minDistances.entries.first().key
@@ -58,7 +58,7 @@ fun main() = object : AdventSolution(
         }
         val best = counter.entries.filter {
             !invalidIDs.contains(it.key.id)
-        }.maxBy { it.value }!!
+        }.maxByOrNull { it.value }!!
         return "${best.key.id}: ${best.key.x}, ${best.key.y} = ${best.value}"
     }
 
@@ -67,8 +67,8 @@ fun main() = object : AdventSolution(
         val xs = grid.map { it.x }
         val ys = grid.map { it.y }
         var counter = 0
-        (ys.min()!! .. ys.max()!!).forEach y@{ y ->
-            (xs.min()!! .. xs.max()!!).forEach x@{ x ->
+        (ys.minOrNull()!! .. ys.maxOrNull()!!).forEach y@{ y ->
+            (xs.minOrNull()!! .. xs.maxOrNull()!!).forEach x@{ x ->
                 val sumDistance = grid.sumBy { p -> abs(p.x-x) + abs(p.y-y) }
                 if(sumDistance < 10000) counter ++
             }

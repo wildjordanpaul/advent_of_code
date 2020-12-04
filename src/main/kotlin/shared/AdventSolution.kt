@@ -10,6 +10,12 @@ abstract class AdventSolution(
         val input2: String = input1
 ) {
 
+    companion object {
+        fun loadInput(path: String): String {
+            return object {}.javaClass.getResource(path).readText()
+        }
+    }
+
     abstract fun solveProblem1(input: String): Any?
     abstract fun solveProblem2(input: String): Any?
 

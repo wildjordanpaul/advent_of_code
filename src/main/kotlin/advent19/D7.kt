@@ -23,7 +23,7 @@ class D7 : AdventSolution(
                 amp.reset()
                 amp.execute(programInput, phaseSetting, false)
             }
-        }.max()
+        }.maxOrNull()
     }
 
     override fun solveProblem2(input: String): Any? {
@@ -37,7 +37,7 @@ class D7 : AdventSolution(
                 }
             }
             nextInput
-        }.max()
+        }.maxOrNull()
     }
 
     private fun List<Int>.permutations(): List<List<Int>> {

@@ -1759,7 +1759,7 @@ fun main() = object : AdventSolution(
     }
 
     override fun solveProblem2(input: String): String {
-        var changed = false
+        var changed: Boolean
         do {
             changed = false
             possibles.filter { it.value.size == 1 }.forEach { (entry, possible) ->

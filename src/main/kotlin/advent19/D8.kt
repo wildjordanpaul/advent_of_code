@@ -13,7 +13,7 @@ class D8 : AdventSolution(
         val layer = (0 until input.length/layerSize).map { layer ->
             val start = layer*layerSize
             input.substring(start, start+layerSize)
-        }.minBy { layer ->
+        }.minByOrNull { layer ->
             layer.count { it == '0' }
         } ?: ""
         return layer.count { it == '1' } * layer.count { it == '2' }

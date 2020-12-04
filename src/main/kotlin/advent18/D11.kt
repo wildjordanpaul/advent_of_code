@@ -29,13 +29,13 @@ fun main() = object : AdventSolution(
     override fun solveProblem1(input: String): String {
         val max = input.generateGrid()
             .filter { it.x < 298 && it.y < 298 }
-            .maxBy { it.totalPower(3) }!!
+            .maxByOrNull { it.totalPower(3) }!!
         return "${max.x},${max.y}"
     }
 
     override fun solveProblem2(input: String): String {
         val grid = input.generateGrid()
-        val max = grid.maxBy { it.bestSize.second }!!
+        val max = grid.maxByOrNull { it.bestSize.second }!!
         return "${max.x},${max.y},${max.bestSize.first}"
     }
 

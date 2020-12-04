@@ -1177,10 +1177,10 @@ fun main() = object : AdventSolution(
             }
         }
 
-        val minX = grid.keys.minBy(Point::x)!!.x - 2
-        val minY = grid.keys.minBy(Point::y)!!.y - 1
-        val maxX = grid.keys.maxBy(Point::x)!!.x + 2
-        val maxY = grid.keys.maxBy(Point::y)!!.y
+        val minX = grid.keys.minByOrNull(Point::x)!!.x - 2
+        val minY = grid.keys.minByOrNull(Point::y)!!.y - 1
+        val maxX = grid.keys.maxByOrNull(Point::x)!!.x + 2
+        val maxY = grid.keys.maxByOrNull(Point::y)!!.y
         var iterations = 0
 
         val spring = Point(500,0)

@@ -74,7 +74,7 @@ fun main() = object : AdventSolution(
             currentPlayer = (currentPlayer + 1) % (game.playerCount)
             counter += 1
         }
-        return score.values.max().toString()
+        return score.values.maxOrNull().toString()
     }
 
     override fun solveProblem2(input: String): String {

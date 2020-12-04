@@ -191,8 +191,8 @@ fun main() = object : AdventSolution(
     private fun Collection<D13Cart>.sortCarts() = sortedWith(compareBy({ it.y }, { it.x }))
 
     private fun printOut(grid: Map<Point, D13Cell>, carts: Map<Point, D13Cart>) {
-        val maxX = grid.keys.map { it.x }.max()!!
-        val maxY = grid.keys.map { it.y }.max()!!
+        val maxX = grid.keys.map { it.x }.maxOrNull()!!
+        val maxY = grid.keys.map { it.y }.maxOrNull()!!
         (0..maxY).forEach { y ->
             println()
             (0..maxX).forEach { x ->
@@ -254,7 +254,7 @@ fun main() = object : AdventSolution(
     override fun solveProblem1(input: String): String {
         val (grid, carts) = build(input)
         while(true) {
-            carts.move(grid) { c1, c2 ->
+            carts.move(grid) { c1, _ ->
                 return@solveProblem1 c1.xy
             }
         }

@@ -32,7 +32,7 @@ class D4 : AdventSolution(
     }
 
     private fun CharArray.hasAdjacentDuplication(pairsOnly: Boolean = false): Boolean {
-        var current: Char? = null
+        var current: Char?
         var last: Char? = null
         val iter = iterator()
         while(iter.hasNext()) {

@@ -51,14 +51,14 @@ fun main() = object : AdventSolution(
 
     override fun solveProblem1(input: String): String {
         val shifts = input.toShifts()
-        val maxGuard = shifts.groupBy { it.guardNumber }.maxBy { entry -> entry.value.sumBy { it.minutesAsleep.size } }!!
+        val maxGuard = shifts.groupBy { it.guardNumber }.maxByOrNull { entry -> entry.value.sumBy { it.minutesAsleep.size } }!!
         val minuteCounter = mutableMapOf<Int, Int>()
         maxGuard.value.forEach { shift ->
             shift.minutesAsleep.forEach { minute ->
                 minuteCounter[minute] = (minuteCounter[minute]?:0) + 1
             }
         }
-        val bestTime = minuteCounter.maxBy { it.value }!!
+        val bestTime = minuteCounter.maxByOrNull { it.value }!!
         return "${maxGuard.key} * ${bestTime.key} = ${maxGuard.key.toInt() * bestTime.key}"
     }
 
@@ -73,8 +73,8 @@ fun main() = object : AdventSolution(
             }
             return@mapValues minuteCounter
         }
-        val maxGuard = mappedShifts.maxBy { it.value.values.max() ?: 0 }!!
-        val maxMinute = maxGuard.value.maxBy { it.value }!!.key
+        val maxGuard = mappedShifts.maxByOrNull { it.value.values.maxOrNull() ?: 0 }!!
+        val maxMinute = maxGuard.value.maxByOrNull { it.value }!!.key
         return "${maxGuard.key} * $maxMinute = ${maxGuard.key.toInt() * maxMinute}"
     }
 

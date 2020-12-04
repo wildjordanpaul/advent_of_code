@@ -19,14 +19,14 @@ class D3 : AdventSolution(
         return input.toGrid()
             .intersections()
             .map { it.key.manhattanDistance() }
-            .min()
+            .minOrNull()
     }
 
     override fun solveProblem2(input: String): Any? {
         return input.toGrid()
             .intersections()
             .map { it.value.totalSteps }
-            .min()
+            .minOrNull()
     }
 
     private fun Map<Point, Polarity>.intersections() = entries.
