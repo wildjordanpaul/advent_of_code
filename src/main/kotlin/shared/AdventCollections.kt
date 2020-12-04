@@ -9,6 +9,7 @@ inline fun <T> Iterable<T>.forEachPair(action: (Pair<T,T>) -> Unit) {
 }
 
 fun String.splitInts(delimiter: String = ",") = split(delimiter).map(String::toInt)
+fun String.splitLongs(delimiter: String = ",") = split(delimiter).map(String::toLong)
 fun String.splitDoubles(delimiter: String = ",") = split(delimiter).map(String::toDouble)
 
 fun Iterable<Point>.rangeX() = (minBy(Point::x)?.x ?: 0)..(maxBy(Point::x)?.x ?: 0)
