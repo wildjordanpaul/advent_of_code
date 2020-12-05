@@ -1,8 +1,6 @@
 package advent20
 
 import shared.AdventSolution
-import shared.splitInTwo
-import kotlin.math.max
 
 class Day5 : AdventSolution(
     mapOf(
