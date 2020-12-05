@@ -19,9 +19,8 @@ class Day5 : AdventSolution(
     }
 
     override fun solveProblem2(input: String): Any {
-        val seatNumbers = input.toSeatNumbers()
-        val maxSeatNumber = seatNumbers.maxOrNull()!!
-        return ((0..maxSeatNumber) - seatNumbers).last()
+        val seatNumbers = input.toSeatNumbers().sorted()
+        return ((seatNumbers.first()..seatNumbers.last()) - seatNumbers)
     }
 
     private fun String.toSeatNumbers() = split("\n").map { it.toSeatNumber() }
