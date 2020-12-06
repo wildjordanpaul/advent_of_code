@@ -51,15 +51,12 @@ class Day6 : AdventSolution(
 
     override fun solveProblem2(input: String): Any {
         return input.split("\n\n").sumBy { group ->
-            val ppl = group.split("\n").map{ it.toCharArray().toList() }
-            val charCount = mutableMapOf<Char, Int>()
-            ppl.forEach { answers ->
-                answers.forEach { char ->
-                    val n = charCount[char] ?: 0
-                    charCount[char] = n + 1
-                }
-            }
-            charCount.entries.count { it.value == ppl.size }
+            group.split("\n")
+                .map{ it.toCharArray() }
+                .foldIndexed(setOf<Char>()) { i, set, ca ->
+                    if(i == 0) ca.toSet()
+                    else ca.intersect(set)
+                }.size
         }
     }
 
