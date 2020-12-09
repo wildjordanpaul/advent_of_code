@@ -12,8 +12,8 @@ fun String.splitInts(delimiter: String = ",") = split(delimiter).map(String::toI
 fun String.splitLongs(delimiter: String = ",") = split(delimiter).map(String::toLong)
 fun String.splitDoubles(delimiter: String = ",") = split(delimiter).map(String::toDouble)
 
-fun Iterable<Point>.rangeX() = (minBy(Point::x)?.x ?: 0)..(maxBy(Point::x)?.x ?: 0)
-fun Iterable<Point>.rangeY() = (minBy(Point::y)?.y ?: 0)..(maxBy(Point::y)?.y ?: 0)
+fun Iterable<Point>.rangeX() = (minByOrNull(Point::x)?.x ?: 0)..(maxByOrNull(Point::x)?.x ?: 0)
+fun Iterable<Point>.rangeY() = (minByOrNull(Point::y)?.y ?: 0)..(maxByOrNull(Point::y)?.y ?: 0)
 
 fun String.splitInTwo(delimiter: String = ","): Pair<String,String> {
     val pieces = split(delimiter, limit=2)

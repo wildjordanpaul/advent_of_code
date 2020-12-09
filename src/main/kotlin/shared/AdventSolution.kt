@@ -6,9 +6,18 @@ import kotlin.test.assertEquals
 abstract class AdventSolution(
         val testCases1: Map<String, Any> = mapOf(),
         val testCases2: Map<String, Any> = mapOf(),
-        val input1: String,
-        val input2: String = input1
+        var input1: String = "",
+        var input2: String = input1,
+        val pullInputFromNorthPole: Boolean = false
 ) {
+
+    init {
+        if (pullInputFromNorthPole) {
+            val day = javaClass.name.split(".").last().replace(Regex("[^0-9]"), "").toInt()
+            input1 = AdventPuller().pull(day)
+            input2 = input1
+        }
+    }
 
     companion object {
         fun loadInput(path: String): String {
