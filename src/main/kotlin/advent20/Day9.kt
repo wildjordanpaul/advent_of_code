@@ -66,8 +66,8 @@ class Day9 : AdventSolution(
                 i2 += 1
             }
             if (i2 > 1 && runningCount == invalidNumber) {
-                val ints2 = numbers.subList(i, i+i2)
-                return ints2.minOrNull()!! + ints2.maxOrNull()!!
+                val subNumbers = numbers.subList(i, i+i2).sorted()
+                return subNumbers.first() + subNumbers.last()
             }
         }
         return -1
