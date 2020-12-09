@@ -55,10 +55,6 @@ class Day9 : AdventSolution(
         return numbers.findInvalidNumber()
     }
 
-    private fun List<Long>.hasAdders(target: Long): Boolean {
-        return any { target - it != it && contains(target - it) }
-    }
-
     override fun solveProblem2(input: String): Any {
         val numbers = input.split("\n").map(String::toLong)
         val invalidNumber = numbers.findInvalidNumber()
@@ -84,6 +80,11 @@ class Day9 : AdventSolution(
                 return number
         }
         return -1L
+    }
+
+
+    private fun List<Long>.hasAdders(target: Long): Boolean {
+        return any { target - it != it && contains(target - it) }
     }
 
 }
