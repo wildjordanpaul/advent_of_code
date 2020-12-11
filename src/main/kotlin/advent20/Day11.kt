@@ -55,7 +55,7 @@ class Day11 : AdventSolution(
                     }
                     else -> seat
                 }
-            }.toMap()
+            }
         } while (changed)
         return plane.values.count { it == '#' }
     }
@@ -83,7 +83,7 @@ class Day11 : AdventSolution(
                     }
                     else -> seat
                 }
-            }.toMap()
+            }
         } while (changed)
         return plane.values.count { it == '#' }
     }
