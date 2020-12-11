@@ -39,21 +39,21 @@ class Day11 : AdventSolution(
 
         do {
             var changed = false
-            plane = plane.map { (location, seat) ->
+            plane = plane.mapValues { (location, seat) ->
                 when(seat) {
                     'L' -> {
                         if (location.adjacents.all { plane[it] != '#' }) {
                             changed = true
-                            location to '#'
-                        } else location to seat
+                            '#'
+                        } else seat
                     }
                     '#' -> {
                         if (location.adjacents.count { plane[it] == '#' } >= 4) {
                             changed = true
-                            location to 'L'
-                        } else location to seat
+                            'L'
+                        } else seat
                     }
-                    else -> location to seat
+                    else -> seat
                 }
             }.toMap()
         } while (changed)
@@ -67,21 +67,21 @@ class Day11 : AdventSolution(
 
         do {
             var changed = false
-            plane = plane.map { (location, seat) ->
+            plane = plane.mapValues { (location, seat) ->
                 when(seat) {
                     'L' -> {
                         if (plane.scanFrom(location) == 0) {
                             changed = true
-                            location to '#'
-                        } else location to seat
+                            '#'
+                        } else seat
                     }
                     '#' -> {
                         if (plane.scanFrom(location) >= 5) {
                             changed = true
-                            location to 'L'
-                        } else location to seat
+                            'L'
+                        } else seat
                     }
-                    else -> location to seat
+                    else -> seat
                 }
             }.toMap()
         } while (changed)
