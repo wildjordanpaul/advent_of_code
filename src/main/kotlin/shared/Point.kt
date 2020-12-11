@@ -21,13 +21,19 @@ data class Point(val x: Int, val y: Int) {
 
     fun manhattanDistance(offsetX: Int = 0, offsetY: Int = 0) = abs(x - offsetX) + abs(y - offsetY)
 
-    fun navigate(char: Char): Point {
+    fun navigate(char: Char, amount: Int = 1): Point {
         return when(char.toUpperCase()) {
-            'N','U' -> above()
-            'S','D' -> below()
-            'W','L' -> left()
-            'E','R' -> right()
+            'N','U' -> above(amount)
+            'S','D' -> below(amount)
+            'W','L' -> left(amount)
+            'E','R' -> right(amount)
             else -> this
         }
+    }
+
+    fun navigate(path: String, amount: Int = 1): Point {
+        var p = this
+        path.forEach { p = p.navigate(it, amount) }
+        return p
     }
 }
