@@ -2,7 +2,6 @@ package advent20
 
 import shared.AdventSolution
 import shared.Point
-import shared.splitInts
 
 class Day11 : AdventSolution(
     mapOf("""
@@ -33,22 +32,22 @@ class Day11 : AdventSolution(
 ) {
 
     override fun solveProblem1(input: String): Any {
-        var plane = input.split("\n").flatMapIndexed{ y, row ->
+        var seatMap = input.split("\n").flatMapIndexed{ y, row ->
             row.mapIndexed { x, seat -> Point(x, y) to seat }
         }.toMap()
 
         do {
             var changed = false
-            plane = plane.mapValues { (location, seat) ->
+            seatMap = seatMap.mapValues { (location, seat) ->
                 when(seat) {
                     'L' -> {
-                        if (location.adjacents.all { plane[it] != '#' }) {
+                        if (location.adjacents.all { seatMap[it] != '#' }) {
                             changed = true
                             '#'
                         } else seat
                     }
                     '#' -> {
-                        if (location.adjacents.count { plane[it] == '#' } >= 4) {
+                        if (location.adjacents.count { seatMap[it] == '#' } >= 4) {
                             changed = true
                             'L'
                         } else seat
@@ -57,26 +56,26 @@ class Day11 : AdventSolution(
                 }
             }
         } while (changed)
-        return plane.values.count { it == '#' }
+        return seatMap.values.count { it == '#' }
     }
 
     override fun solveProblem2(input: String): Any {
-        var plane = input.split("\n").flatMapIndexed{ y, row ->
+        var seatMap = input.split("\n").flatMapIndexed{ y, row ->
             row.mapIndexed { x, seat -> Point(x, y) to seat }
         }.toMap()
 
         do {
             var changed = false
-            plane = plane.mapValues { (location, seat) ->
+            seatMap = seatMap.mapValues { (location, seat) ->
                 when(seat) {
                     'L' -> {
-                        if (plane.scanFrom(location) == 0) {
+                        if (seatMap.scanFrom(location) == 0) {
                             changed = true
                             '#'
                         } else seat
                     }
                     '#' -> {
-                        if (plane.scanFrom(location) >= 5) {
+                        if (seatMap.scanFrom(location) >= 5) {
                             changed = true
                             'L'
                         } else seat
@@ -85,7 +84,7 @@ class Day11 : AdventSolution(
                 }
             }
         } while (changed)
-        return plane.values.count { it == '#' }
+        return seatMap.values.count { it == '#' }
     }
 
     private fun Map<Point, Char>.scanFrom(from: Point): Int {
