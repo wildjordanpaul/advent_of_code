@@ -36,4 +36,14 @@ data class Point(val x: Int, val y: Int) {
         path.forEach { p = p.navigate(it, amount) }
         return p
     }
+
+    fun rotate(degrees: Int): Point {
+        return when(Math.floorMod(degrees, 360)) {
+            90 -> Point(y * -1, x)
+            180 -> Point(x * -1, y * -1)
+            270 -> Point(y, x * -1)
+            0 -> this
+            else -> throw IllegalArgumentException("Invalid rotation: $degrees")
+        }
+    }
 }
