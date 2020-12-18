@@ -3,16 +3,14 @@ package shared
 import kotlin.math.abs
 
 data class Point(val x: Int, val y: Int) {
-    val adjacents by lazy { listOf(
-        Point(x+1, y),
-        Point(x-1, y),
-        Point(x+1, y+1),
-        Point(x-1, y+1),
-        Point(x+1, y-1),
-        Point(x-1, y-1),
-        Point(x, y+1),
-        Point(x, y-1)
-    ) }
+    val adjacents by lazy {
+        listOf(x, x+1, x-1).flatMap { x2 ->
+            listOf(y, y+1, y-1).mapNotNull { y2 ->
+                val point = Point(x2, y2)
+                if(point != this) point else null
+            }
+        }
+    }
 
     fun below(i: Int = 1) = Point(x, y+i)
     fun right(i: Int = 1) = Point(x+i, y)
