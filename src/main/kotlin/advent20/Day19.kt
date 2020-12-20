@@ -77,24 +77,7 @@ class Day19 : AdventSolution(
         val (rules, messages) = input.splitInTwo("\n\n")
         val ruleMap = rules.split("\n").map { rule ->
             val (i, ruleDef) = rule.splitInTwo(": ")
-            val pieces = mutableListOf<MutableList<Any>>()
-            var currentPiece = mutableListOf<Any>()
-            ruleDef.split(" ").forEach { piece ->
-                when {
-                    """\d+""".toRegex().matches(piece) -> {
-                        currentPiece.add(piece.toInt())
-                    }
-                    piece == "|" -> {
-                        pieces.add(currentPiece)
-                        currentPiece = mutableListOf()
-                    }
-                    else -> {
-                        currentPiece.add(piece.replace("\"".toRegex(), ""))
-                    }
-                }
-            }
-            pieces.add(currentPiece)
-            i.toInt() to pieces
+            i.toInt() to ruleDef.toRuleDefinition()
         }.toMap()
 
         val ruleZero = ruleMap.evalRule(0).toRegex()
@@ -110,32 +93,9 @@ class Day19 : AdventSolution(
             val (i, ruleDef) = rule.splitInTwo(": ")
 
             val value: List<List<Any>> = when(i.toInt()) {
-                8 -> {
-                    listOf(listOf(42), listOf(42, 8))
-                }
-                11 -> {
-                    listOf(listOf(42, 31), listOf(42, 11, 31))
-                }
-                else -> {
-                    val pieces = mutableListOf<MutableList<Any>>()
-                    var currentPiece = mutableListOf<Any>()
-                    ruleDef.split(" ").forEach { piece ->
-                        when {
-                            """\d+""".toRegex().matches(piece) -> {
-                                currentPiece.add(piece.toInt())
-                            }
-                            piece == "|" -> {
-                                pieces.add(currentPiece)
-                                currentPiece = mutableListOf()
-                            }
-                            else -> {
-                                currentPiece.add(piece.replace("\"".toRegex(), ""))
-                            }
-                        }
-                    }
-                    pieces.add(currentPiece)
-                    pieces
-                }
+                8 -> listOf(listOf(42), listOf(42, 8))
+                11 -> listOf(listOf(42, 31), listOf(42, 11, 31))
+                else -> ruleDef.toRuleDefinition()
             }
 
             i.toInt() to value
@@ -146,6 +106,27 @@ class Day19 : AdventSolution(
         return messages.split("\n").count { message ->
             ruleZero.matches(message)
         }
+    }
+
+    private fun String.toRuleDefinition(): List<List<Any>> {
+        val pieces = mutableListOf<MutableList<Any>>()
+        var currentPiece = mutableListOf<Any>()
+        split(" ").forEach { piece ->
+            when {
+                """\d+""".toRegex().matches(piece) -> {
+                    currentPiece.add(piece.toInt())
+                }
+                piece == "|" -> {
+                    pieces.add(currentPiece)
+                    currentPiece = mutableListOf()
+                }
+                else -> {
+                    currentPiece.add(piece.replace("\"".toRegex(), ""))
+                }
+            }
+        }
+        pieces.add(currentPiece)
+        return pieces
     }
 
     private fun Map<Int, List<List<Any>>>.evalRule(i: Int, part2: Boolean = false): String {
