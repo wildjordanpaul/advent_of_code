@@ -1,7 +1,7 @@
 package shared
 
-import advent20.*
+import advent21.*
 
 fun main() {
-    Day19().solve()
+    Day1().solve()
 }

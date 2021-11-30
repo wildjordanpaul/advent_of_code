@@ -14,7 +14,7 @@ fun main() = object : AdventSolution(
         "4845 6 770"
 ) {
 
-    override fun solveProblem1(input: String): Any? {
+    override fun solveProblem1(input: String): Any {
         val inputs = input.split(" ").map(String::toInt)
         val depth = inputs[0].toBigInteger()
         val target = Point(inputs[1], inputs[2])

@@ -65,7 +65,7 @@ class Day7 : AdventSolution(
     }
 
     private fun Map<String, List<BagRule>>.countBagsIn(bag: String): Int {
-        return get(bag)?.sumBy {
+        return get(bag)?.sumOf {
             it.count * (1 + countBagsIn(it.bag))
         } ?: 0
     }

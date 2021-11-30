@@ -71,7 +71,7 @@ class D7 : AdventSolution(
 
         fun reset() {
             program = rawProgram.splitInts().toMutableList()
-            output = mutableListOf<Int>()
+            output = mutableListOf()
             pointer = 0
             halted = false
             phaseSettingUsed = false

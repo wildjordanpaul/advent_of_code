@@ -1,7 +1,6 @@
 package advent20
 
 import shared.AdventSolution
-import java.io.File
 
 class Day3 : AdventSolution(
     mapOf("""

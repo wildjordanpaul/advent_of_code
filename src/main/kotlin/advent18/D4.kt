@@ -13,7 +13,7 @@ fun main() = object : AdventSolution(
 ) {
 
     private fun String.parseCase(): D4Case {
-        val (y, m, d, h, min, s) = """\[(\d+)-(\d+)-(\d+) (\d+):(\d+)\] ((.*|\s)?)""".toRegex().find(this)!!.destructured
+        val (y, m, d, h, min, s) = """\[(\d+)-(\d+)-(\d+) (\d+):(\d+)] ((.*|\s)?)""".toRegex().find(this)!!.destructured
         return D4Case (y.toInt(), m.toInt(), d.toInt(), h.toInt(), min.toInt(), s)
     }
 
@@ -51,7 +51,7 @@ fun main() = object : AdventSolution(
 
     override fun solveProblem1(input: String): String {
         val shifts = input.toShifts()
-        val maxGuard = shifts.groupBy { it.guardNumber }.maxByOrNull { entry -> entry.value.sumBy { it.minutesAsleep.size } }!!
+        val maxGuard = shifts.groupBy { it.guardNumber }.maxByOrNull { entry -> entry.value.sumOf { it.minutesAsleep.size } }!!
         val minuteCounter = mutableMapOf<Int, Int>()
         maxGuard.value.forEach { shift ->
             shift.minutesAsleep.forEach { minute ->

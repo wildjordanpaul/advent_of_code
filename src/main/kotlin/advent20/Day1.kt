@@ -13,7 +13,7 @@ class Day1 : AdventSolution(
         return ints.findEntryMultiplier(2020)
     }
 
-    override fun solveProblem2(input: String): Any? {
+    override fun solveProblem2(input: String): Any {
         val ints = input.splitInts(",")
         ints.forEachIndexed { index1, n1 ->
             val multiplier = ints.findEntryMultiplier(2020 - n1, ignore = index1)

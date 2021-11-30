@@ -75,7 +75,7 @@ fun main() = object : AdventSolution(
         val instructions = lines.takeLast(lines.size-1).map { line ->
             val (instruction, code) = """(\w+) ([0-9\s]+)""".toRegex().find(line)!!.destructured
             Pair(
-                Instruction.valueOf(instruction.toUpperCase()),
+                Instruction.valueOf(instruction.uppercase()),
                 code.split(" ").map(String::toInt)
             )
         }
@@ -90,7 +90,7 @@ fun main() = object : AdventSolution(
                     set(instructionRegister, get(instructionRegister) + 1)
                 }
             }
-            println("[${register.joinToString(", ")}] ${instruction.first.name.toLowerCase()} ${instruction.second.joinToString(" ")} [${newRegister.joinToString(", ")}]")
+            println("[${register.joinToString(", ")}] ${instruction.first.name.lowercase()} ${instruction.second.joinToString(" ")} [${newRegister.joinToString(", ")}]")
             register = newRegister
         }
     }

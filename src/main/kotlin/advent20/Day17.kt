@@ -26,16 +26,15 @@ class Day17 : AdventSolution(
         repeat(6) {
             map = map.keys
                 .flatMap { it.adjacents + it }
-                .toSet()
-                .map { point ->
+                .toSet().associateWith { point ->
                     val activeNeighborCount = point.adjacents.count { map.getOrDefault(it, false) }
                     val active = if (map.getOrDefault(point, false)) {
                         activeNeighborCount in listOf(2, 3)
                     } else {
                         activeNeighborCount == 3
                     }
-                    point to active
-                }.toMap()
+                    active
+                }
         }
         return map.values.count { it }
     }
@@ -48,16 +47,15 @@ class Day17 : AdventSolution(
         repeat(6) {
             map = map.keys
                 .flatMap { it.adjacents + it }
-                .toSet()
-                .map { point ->
+                .toSet().associateWith { point ->
                     val activeNeighborCount = point.adjacents.count { map.getOrDefault(it, false) }
                     val active = if (map.getOrDefault(point, false)) {
                         activeNeighborCount in listOf(2, 3)
                     } else {
                         activeNeighborCount == 3
                     }
-                    point to active
-                }.toMap()
+                    active
+                }
         }
         return map.values.count { it }
     }

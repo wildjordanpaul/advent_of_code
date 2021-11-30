@@ -33,7 +33,7 @@ fun main() = object : AdventSolution(
     }
 
     override fun solveProblem1(input: String): String {
-        return generateFabricFor(input).sumBy { row ->
+        return generateFabricFor(input).sumOf { row ->
             row.count { inch -> inch > 1 }
         }.toString()
     }

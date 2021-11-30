@@ -7,11 +7,11 @@ class D4Try2 : AdventSolution(
     mapOf(),
     "382345-843167"
 ) {
-    override fun solveProblem1(input: String): Any? {
+    override fun solveProblem1(input: String): Any {
         return countPossiblePasswords(input)
     }
 
-    override fun solveProblem2(input: String): Any? {
+    override fun solveProblem2(input: String): Any {
         return countPossiblePasswords(input, true)
     }
 

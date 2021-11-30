@@ -1,3 +1,5 @@
+@file:Suppress("LocalVariableName")
+
 package advent18
 
 import shared.AdventSolution

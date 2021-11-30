@@ -1,8 +1,6 @@
 package advent20
 
 import shared.AdventSolution
-import shared.Point3D
-import shared.Point4D
 
 class Day18 : AdventSolution(
     mapOf(
@@ -25,21 +23,21 @@ class Day18 : AdventSolution(
 ) {
 
     override fun solveProblem1(input: String): Any {
-        return input.split("\n").map { line ->
+        return input.split("\n").sumOf { line ->
             line.nestedReplace("""\(([^()]+)\)""".toRegex()) {
                 val (sub) = it.destructured
                 sub.evalLTR().toString()
             }.evalLTR()
-        }.sum()
+        }
     }
 
     override fun solveProblem2(input: String): Any {
-        return input.split("\n").map { line ->
+        return input.split("\n").sumOf { line ->
             line.nestedReplace("\\(([^()]+)\\)".toRegex()) {
                 val (sub) = it.destructured
                 sub.evalPlusThenMultiply().toString()
             }.evalPlusThenMultiply()
-        }.sum()
+        }
     }
 
     private fun String.evalLTR(): Long {

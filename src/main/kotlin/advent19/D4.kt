@@ -11,11 +11,11 @@ class D4 : AdventSolution(
     ),
     "382345-843167"
 ) {
-    override fun solveProblem1(input: String): Any? {
+    override fun solveProblem1(input: String): Any {
         return countPossiblePasswords(input)
     }
 
-    override fun solveProblem2(input: String): Any? {
+    override fun solveProblem2(input: String): Any {
         return countPossiblePasswords(input, true)
     }
 

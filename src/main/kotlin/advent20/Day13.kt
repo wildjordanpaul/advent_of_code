@@ -1,8 +1,6 @@
 package advent20
 
 import shared.AdventSolution
-import shared.Point
-import java.math.BigInteger
 
 class Day13 : AdventSolution(
     mapOf("""

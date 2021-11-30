@@ -59,7 +59,7 @@ class D11Cell(
 ) {
 
     fun totalPower(size: Int): Int {
-        return powerLevel + (1..(size*size - 1)).sumBy {
+        return powerLevel + (1 until size*size).sumOf {
             val tX = x + it%size
             val tY = y + it/size
             val tR = tX+10

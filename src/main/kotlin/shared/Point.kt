@@ -20,7 +20,7 @@ data class Point(val x: Int, val y: Int) {
     fun manhattanDistance(offsetX: Int = 0, offsetY: Int = 0) = abs(x - offsetX) + abs(y - offsetY)
 
     fun navigate(char: Char, amount: Int = 1): Point {
-        return when(char.toUpperCase()) {
+        return when(char.uppercaseChar()) {
             'N','U' -> above(amount)
             'S','D' -> below(amount)
             'W','L' -> left(amount)

@@ -67,8 +67,7 @@ class Day4 : AdventSolution(
         return input.split("\n\n").count { passport ->
             passport
                 .split("\n", " ")
-                .map { it.splitInTwo(":") }
-                .toMap()
+                .associate { it.splitInTwo(":") }
                 .isValid()
         }
     }

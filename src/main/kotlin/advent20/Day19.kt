@@ -1,8 +1,6 @@
 package advent20
 
 import shared.AdventSolution
-import shared.Point3D
-import shared.Point4D
 import shared.splitInTwo
 
 class Day19 : AdventSolution(
@@ -75,10 +73,10 @@ class Day19 : AdventSolution(
 
     override fun solveProblem1(input: String): Any {
         val (rules, messages) = input.splitInTwo("\n\n")
-        val ruleMap = rules.split("\n").map { rule ->
+        val ruleMap = rules.split("\n").associate { rule ->
             val (i, ruleDef) = rule.splitInTwo(": ")
             i.toInt() to ruleDef.toRuleDefinition()
-        }.toMap()
+        }
 
         val ruleZero = ruleMap.evalRule(0).toRegex()
 
@@ -89,17 +87,17 @@ class Day19 : AdventSolution(
 
     override fun solveProblem2(input: String): Any {
         val (rules, messages) = input.splitInTwo("\n\n")
-        val ruleMap = rules.split("\n").map { rule ->
+        val ruleMap = rules.split("\n").associate { rule ->
             val (i, ruleDef) = rule.splitInTwo(": ")
 
-            val value: List<List<Any>> = when(i.toInt()) {
+            val value: List<List<Any>> = when (i.toInt()) {
                 8 -> listOf(listOf(42), listOf(42, 8))
                 11 -> listOf(listOf(42, 31), listOf(42, 11, 31))
                 else -> ruleDef.toRuleDefinition()
             }
 
             i.toInt() to value
-        }.toMap()
+        }
 
         val ruleZero = ruleMap.evalRule(0, true).toRegex()
 

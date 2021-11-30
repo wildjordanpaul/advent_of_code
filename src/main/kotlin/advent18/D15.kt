@@ -184,9 +184,7 @@ fun main() = object : AdventSolution(
 
             val occupied = units.map { it.point }.toSet()
             val openSpaces = spaces.filter { !occupied.contains(it) }.toMutableSet()
-            val unitMap = units
-                .map { it.point to it }
-                .toMap()
+            val unitMap = units.associateBy { it.point }
 
             println()
             println("=== round $roundsComplete ===")
@@ -214,12 +212,11 @@ fun main() = object : AdventSolution(
 
                 if(deadUnits.contains(unit)) return@forEach
                 val targets = units
-                    .filter {  unit2 -> unit2.isElf != unit.isElf }
-                    .map { it.point to it }
-                    .toMap()
+                    .filter { unit2 -> unit2.isElf != unit.isElf }
+                    .associateBy { it.point }
 
                 if(targets.isEmpty()) {
-                    val points = units.sumBy { it.hp }
+                    val points = units.sumOf { it.hp }
                     return "$roundsComplete * $points = ${roundsComplete * points}"
                 }
 

@@ -1,7 +1,6 @@
 package advent19
 
 import shared.*
-import java.lang.RuntimeException
 
 class D3 : AdventSolution(
     mapOf(

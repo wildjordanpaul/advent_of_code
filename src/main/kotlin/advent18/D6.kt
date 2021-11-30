@@ -39,7 +39,7 @@ fun main() = object : AdventSolution(
         val invalidIDs = mutableSetOf<Char>()
         (ys.minOrNull()!! .. ys.maxOrNull()!!).forEach { y ->
             (xs.minOrNull()!! .. xs.maxOrNull()!!).forEach { x ->
-                val distances = grid.map { p -> p to abs(p.x-x) + abs(p.y-y) }.toMap()
+                val distances = grid.associateWith { p -> abs(p.x - x) + abs(p.y - y) }
                 val minDistance = distances.minByOrNull { it.value }!!.value
                 val minDistances = distances.filter { it.value == minDistance }
                 if(minDistances.size == 1) {
@@ -69,7 +69,7 @@ fun main() = object : AdventSolution(
         var counter = 0
         (ys.minOrNull()!! .. ys.maxOrNull()!!).forEach y@{ y ->
             (xs.minOrNull()!! .. xs.maxOrNull()!!).forEach x@{ x ->
-                val sumDistance = grid.sumBy { p -> abs(p.x-x) + abs(p.y-y) }
+                val sumDistance = grid.sumOf { p -> abs(p.x-x) + abs(p.y-y) }
                 if(sumDistance < 10000) counter ++
             }
         }

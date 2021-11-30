@@ -1727,7 +1727,7 @@ fun main() = object : AdventSolution(
     """.trimIndent()
 ) {
 
-    val possibles = (0..15).map { it to Instruction.values().toList() }.toMap().toMutableMap()
+    val possibles = (0..15).associateWith { Instruction.values().toList() }.toMutableMap()
 
     private fun Instruction.validate(case: D16Case): Boolean {
         return try {
@@ -1763,7 +1763,7 @@ fun main() = object : AdventSolution(
         do {
             changed = false
             possibles.filter { it.value.size == 1 }.forEach { (entry, possible) ->
-                possibles.forEach { e, v ->
+                possibles.forEach { (e, v) ->
                     if (e != entry && v.contains(possible.first())) {
                         changed = true
                         possibles[e] = (v - possible.first())

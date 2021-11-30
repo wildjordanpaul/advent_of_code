@@ -26,13 +26,13 @@ class Day16 : AdventSolution(
 
     override fun solveProblem1(input: String): Any {
         val sections = input.split("\n\n")
-        val ruleMap = sections[0].split("\n").map { rule ->
+        val ruleMap = sections[0].split("\n").associate { rule ->
             val (name, ruleValue) = rule.splitInTwo(": ")
             name to ruleValue.split(" or ").map { range ->
                 val (start, end) = range.splitInTwo("-")
                 (start.toInt()..end.toInt())
             }
-        }.toMap()
+        }
         val badValues = sections[2].split("\n").flatMap { nearbyTicket ->
             val values = nearbyTicket.split(",").mapNotNull(String::toIntOrNull)
             values.filter { value ->
@@ -47,13 +47,13 @@ class Day16 : AdventSolution(
     override fun solveProblem2(input: String): Any {
         val sections = input.split("\n\n")
 
-        val ruleMap = sections[0].split("\n").map { rule ->
+        val ruleMap = sections[0].split("\n").associate { rule ->
             val (name, ruleValue) = rule.splitInTwo(": ")
             name to ruleValue.split(" or ").map { range ->
                 val (start, end) = range.splitInTwo("-")
                 (start.toInt()..end.toInt())
             }
-        }.toMap()
+        }
 
         val validTickets = sections[2].split("\n").mapNotNull { nearbyTicket ->
             val values = nearbyTicket.split(",").mapNotNull(String::toIntOrNull)

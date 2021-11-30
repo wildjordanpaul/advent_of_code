@@ -9,14 +9,14 @@ class Day2 : AdventSolution(
 ) {
     val policyRegex = """(\d+)-(\d+) ([\w\s]+): ([\w\s]+)""".toRegex()
 
-    override fun solveProblem1(input: String): Any? {
+    override fun solveProblem1(input: String): Any {
         return input.split(",").count { policy ->
             val (min, max, char, password) = policyRegex.find(policy)!!.destructured
             password.count { it == char[0] } in min.toInt()..(max.toInt())
         }
     }
 
-    override fun solveProblem2(input: String): Any? {
+    override fun solveProblem2(input: String): Any {
         return input.split(",").count { policy ->
             val (i1, i2, char, password) = policyRegex.find(policy)!!.destructured
             val validPositions = listOf(i1.toInt(), i2.toInt())

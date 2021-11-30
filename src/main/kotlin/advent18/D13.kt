@@ -191,8 +191,8 @@ fun main() = object : AdventSolution(
     private fun Collection<D13Cart>.sortCarts() = sortedWith(compareBy({ it.y }, { it.x }))
 
     private fun printOut(grid: Map<Point, D13Cell>, carts: Map<Point, D13Cart>) {
-        val maxX = grid.keys.map { it.x }.maxOrNull()!!
-        val maxY = grid.keys.map { it.y }.maxOrNull()!!
+        val maxX = grid.keys.maxOf { it.x }
+        val maxY = grid.keys.maxOf { it.y }
         (0..maxY).forEach { y ->
             println()
             (0..maxX).forEach { x ->

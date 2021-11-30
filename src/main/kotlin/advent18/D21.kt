@@ -57,7 +57,7 @@ fun main() = object : AdventSolution(
         val instructions = lines.takeLast(lines.size-1).map { line ->
             val (instruction, code) = """(\w+) ([0-9\s]+)""".toRegex().find(line)!!.destructured
             Pair(
-                Instruction.valueOf(instruction.toUpperCase()),
+                Instruction.valueOf(instruction.uppercase()),
                 code.split(" ").map(String::toInt)
             )
         }

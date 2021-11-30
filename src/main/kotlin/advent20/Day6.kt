@@ -41,7 +41,7 @@ class Day6 : AdventSolution(
 ) {
 
     override fun solveProblem1(input: String): Any {
-        return input.split("\n\n").sumBy { group ->
+        return input.split("\n\n").sumOf { group ->
             group.split("\n")
                 .flatMap{ it.toCharArray().toList() }
                 .toSet()
@@ -50,7 +50,7 @@ class Day6 : AdventSolution(
     }
 
     override fun solveProblem2(input: String): Any {
-        return input.split("\n\n").sumBy { group ->
+        return input.split("\n\n").sumOf { group ->
             group.split("\n")
                 .map{ it.toCharArray() }
                 .foldIndexed(setOf<Char>()) { i, set, ca ->

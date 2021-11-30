@@ -42,7 +42,7 @@ fun main() = object : AdventSolution(
             val possibles = filter { (letter, deps) ->
                 !answer.contains(letter) && (deps.isEmpty() || deps.all { answer.contains(it) })
             }
-            answer.add(possibles.keys.sorted().first())
+            answer.add(possibles.keys.minOrNull()!!)
         }
         return answer.joinToString("")
     }
@@ -65,7 +65,7 @@ fun main() = object : AdventSolution(
                 val possibles = graph.filter { (letter, deps) ->
                     !completed.contains(letter) && !inProgress.contains(letter) && (deps.isEmpty() || deps.all { completed.contains(it) })
                 }
-                val popped = possibles.keys.sorted().firstOrNull()
+                val popped = possibles.keys.minOrNull()
                 if(popped != null) {
                     inProgress.add(popped)
                     worker.assign(popped)

@@ -15,11 +15,11 @@ fun main() = object : AdventSolution(
     private fun parseNode(iter: Iterator<Int>): D8Node {
         val node = D8Node(iter.next(), iter.next())
 
-        (0 until node.childCount).forEach {
+        (0 until node.childCount).forEach { _ ->
             node.children.add(parseNode(iter))
         }
 
-        (0 until node.metaCount).forEach {
+        (0 until node.metaCount).forEach { _ ->
             node.meta.add(iter.next())
         }
 
@@ -44,11 +44,11 @@ data class D8Node(
     val children: MutableList<D8Node> = mutableListOf(),
     val meta: MutableList<Int> = mutableListOf()
 ) {
-    fun count(): Int = children.sumBy { it.count() } + meta.sum()
+    fun count(): Int = children.sumOf { it.count() } + meta.sum()
 
     fun count2(): Int {
         return if(children.isEmpty())
             meta.sum()
-        else meta.sumBy { children.getOrNull(it-1)?.count2() ?: 0 }
+        else meta.sumOf { children.getOrNull(it-1)?.count2() ?: 0 }
     }
 }

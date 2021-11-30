@@ -1,11 +1,9 @@
 package advent18
 
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import shared.AdventSolution
 
+@DelicateCoroutinesApi
 fun main() = object : AdventSolution(
         mapOf(
                 "dabAcCaCBAcCcaDA" to "10"
@@ -19,7 +17,7 @@ fun main() = object : AdventSolution(
             .joinToString("|") { c -> c.toMatchers() }
             .toRegex()
 
-    private fun Char.toMatchers() = "$this${this.toUpperCase()}|${this.toUpperCase()}$this"
+    private fun Char.toMatchers() = "$this${this.uppercaseChar()}|${this.uppercaseChar()}$this"
 
     private fun react(input: String): String {
         var previous = ""
@@ -47,7 +45,7 @@ fun main() = object : AdventSolution(
     }
 
     private fun String.reactToAsync(c: Char): Deferred<String> {
-        val newInput = replace("$c|${c.toUpperCase()}".toRegex(), "")
+        val newInput = replace("$c|${c.uppercaseChar()}".toRegex(), "")
         return GlobalScope.async { react(newInput) }
     }
 

@@ -11,7 +11,7 @@ data class Instruction(val type: InstructionType, val value: Int) {
     companion object {
         fun String.toInstructions() = split("\n").map {
             val (type, value) = it.splitInTwo(" ")
-            Instruction(InstructionType.valueOf(type.toUpperCase()), value.toInt())
+            Instruction(InstructionType.valueOf(type.uppercase()), value.toInt())
         }
 
         fun List<Instruction>.run(): Int? {
