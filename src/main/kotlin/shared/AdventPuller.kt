@@ -1,36 +1,13 @@
 package shared
 
-import okhttp3.*
+import okhttp3.Cache
+import okhttp3.CacheControl
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
-import java.lang.RuntimeException
 
 class AdventPuller {
-
-    companion object {
-        const val ADVENT_DOMAIN = "adventofcode.com"
-    }
-
-    private class SantaCookieJar: CookieJar {
-        private val adventCookie by lazy { System.getenv("ADVENT_COOKIE") }
-
-        init {
-            if(adventCookie.isEmpty()) {
-                throw RuntimeException("INVALID COOKIE")
-            }
-        }
-
-        override fun loadForRequest(url: HttpUrl) = listOf(
-            Cookie.Builder()
-                .domain(ADVENT_DOMAIN)
-                .name("session")
-                .value(adventCookie)
-                .build()
-        )
-
-        override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {}
-
-    }
 
     private val cacheDir: File by lazy {
         val f = File("advent_input_cache")
@@ -49,9 +26,9 @@ class AdventPuller {
             .build()
     }
 
-    fun pull(day: Int, fromCache: Boolean = true): String {
+    fun pull(day: Int, year: Int, fromCache: Boolean = true): String {
         val request = Request.Builder()
-            .url("https://${ADVENT_DOMAIN}/2020/day/${day}/input")
+            .url("https://${Advent.DOMAIN}/${year}/day/${day}/input")
 
         if(fromCache) {
             println("pulling input from disk cache for day: $day")
@@ -62,7 +39,7 @@ class AdventPuller {
 
         client.newCall(request.build()).execute().use { response ->
             return if(response.code == 504 && fromCache)
-                pull(day, false)
+                pull(day, year, false)
             else response.body!!.string().trim()
         }
     }

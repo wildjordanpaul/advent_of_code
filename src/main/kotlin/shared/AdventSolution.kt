@@ -11,10 +11,14 @@ abstract class AdventSolution(
         val pullInputFromNorthPole: Boolean = false
 ) {
 
+    private val day by lazy { javaClass.name.split(".").last().replace(Regex("[^0-9]"), "").toInt() }
+    private val year by lazy { 2000 + javaClass.name.split(".").first().replace(Regex("[^0-9]"), "").toInt() }
+    private val puller by lazy  { AdventPuller() }
+    private val pusher by lazy  { AdventPusher() }
+
     init {
         if (pullInputFromNorthPole) {
-            val day = javaClass.name.split(".").last().replace(Regex("[^0-9]"), "").toInt()
-            input1 = AdventPuller().pull(day)
+            input1 = puller.pull(day, year)
             input2 = input1
         }
     }
@@ -28,7 +32,12 @@ abstract class AdventSolution(
     abstract fun solveProblem1(input: String): Any?
     abstract fun solveProblem2(input: String): Any?
 
-    fun solve(skip1: Boolean = false, skip2: Boolean = false) {
+    fun solve(
+        skip1: Boolean = false,
+        skip2: Boolean = false,
+        push1: Boolean = false,
+        push2: Boolean = false
+    ) {
         println("RUNNING ${this.javaClass.name}")
 
         var passedTests = 0
@@ -48,17 +57,27 @@ abstract class AdventSolution(
 
         println("PASSED ALL TESTS: $passedTests")
 
-        if(!skip1) {
+        if(!skip1 && input1.isNotBlank()) {
+            var solution: Any? = null
             val ms = measureTimeMillis {
-                println("---\nSolution 1: ${solveProblem1(input1)}")
+                solution = solveProblem1(input1)
             }
+            println("---\nSolution 1: $solution")
             println("Solved in $ms ms")
+            if (push1 && solution != null) {
+                pusher.push(day, year, 1, solution)
+            }
         }
-        if(!skip2) {
+        if(!skip2 && input2.isNotBlank()) {
+            var solution: Any? = null
             val ms = measureTimeMillis {
-                println("---\nSolution 2: ${solveProblem2(input2)}")
+                solution = solveProblem2(input2)
             }
+            println("---\nSolution 2: $solution")
             println("Solved in $ms ms")
+            if (push2 && solution != null) {
+                pusher.push(day, year, 2, solution)
+            }
         }
     }
 }

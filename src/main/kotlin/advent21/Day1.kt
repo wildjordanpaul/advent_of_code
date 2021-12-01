@@ -1,13 +1,17 @@
 package advent21
 
 import shared.AdventSolution
+import shared.splitInts
 
 class Day1 : AdventSolution(
-    mapOf("" to 514579),
-    mapOf("" to 241861950),
-    input1 = ""
+    mapOf("""
+        
+    """.trimIndent() to 1),
+    mapOf(),
+    pullInputFromNorthPole = true
 ) {
     override fun solveProblem1(input: String): Any? {
+        val ints = input.splitInts()
         return null
     }
 
