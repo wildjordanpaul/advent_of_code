@@ -1,6 +1,6 @@
 package shared
 
-data class Point3D(val x: Int, val y: Int, val z: Int) {
+data class Point3D(val x: Int = 0, val y: Int = 0, val z: Int = 0) {
     val adjacents by lazy {
         listOf(x, x+1, x - 1).flatMap { x2 ->
             listOf(y, y+1, y-1).flatMap { y2 ->

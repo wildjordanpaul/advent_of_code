@@ -2,7 +2,7 @@ package shared
 
 import kotlin.math.abs
 
-data class Point(val x: Int, val y: Int) {
+data class Point(val x: Int = 0, val y: Int = 0) {
     val adjacents by lazy {
         listOf(x, x+1, x-1).flatMap { x2 ->
             listOf(y, y+1, y-1).mapNotNull { y2 ->
