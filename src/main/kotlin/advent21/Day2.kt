@@ -26,7 +26,7 @@ class Day2 : AdventSolution(
             .map(::parseCommand)
             .fold(Point()){ point, (direction, amount) ->
                 point.navigate(direction, amount)
-            }.let { it.x * it.y }
+            }.run { x * y }
     }
 
     override fun solveProblem2(input: String): Any? {
@@ -39,8 +39,8 @@ class Day2 : AdventSolution(
                     "up" -> point.add(z = amount * -1)
                     else -> point
                 }
-            }.let{ it.x * it.y }
+            }.run{ x * y }
     }
 
-    private fun parseCommand(s: String) = s.splitInTwo(" ").let { (a, b) -> Pair(a, b.toInt()) }
+    private fun parseCommand(s: String) = s.splitInTwo(" ").run { Pair(first, second.toInt()) }
 }
