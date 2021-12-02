@@ -11,4 +11,8 @@ data class Point3D(val x: Int, val y: Int, val z: Int) {
             }
         }
     }
+
+    fun add(x: Int = 0, y: Int = 0, z: Int = 0) : Point3D {
+        return this.copy(x = this.x + x, y = this.y + y, z = this.z + z)
+    }
 }

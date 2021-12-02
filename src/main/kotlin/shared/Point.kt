@@ -35,6 +35,10 @@ data class Point(val x: Int, val y: Int) {
         return p
     }
 
+    fun add(x: Int, y: Int): Point {
+        return copy(x = this.x + x, y = this.y + y)
+    }
+
     fun rotate(degrees: Int): Point {
         return when(Math.floorMod(degrees, 360)) {
             90 -> Point(y * -1, x)
