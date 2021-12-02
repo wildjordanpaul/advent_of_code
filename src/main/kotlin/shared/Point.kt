@@ -31,7 +31,17 @@ data class Point(val x: Int, val y: Int) {
 
     fun navigate(path: String, amount: Int = 1): Point {
         var p = this
-        path.forEach { p = p.navigate(it, amount) }
+        if (Regex("[NESWUDLR]+").matches(path.uppercase())) {
+            path.forEach { p = p.navigate(it, amount) }
+        } else {
+            p = when(path.lowercase()) {
+                "down", "below" -> p.below(amount)
+                "up", "above" -> p.above(amount)
+                "forward", "right" -> p.right(amount)
+                "back", "backward", "left" -> p.left(amount)
+                else -> p
+            }
+        }
         return p
     }
 

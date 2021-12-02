@@ -25,12 +25,7 @@ class Day2 : AdventSolution(
         var point = Point(0,0)
         input.split(Regex("\n")).forEach{
             val (direction, amount) = it.parseCommand()
-            point = point.navigate(when(direction) {
-                "forward" -> "R"
-                "down" -> "D"
-                "up" -> "U"
-                else -> ""
-            }, amount)
+            point = point.navigate(direction, amount)
         }
         return point.x * point.y
     }
