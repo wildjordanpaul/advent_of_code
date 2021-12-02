@@ -24,13 +24,13 @@ class Day2 : AdventSolution(
     override fun solveProblem1(input: String): Any? {
         var point = Point(0,0)
         input.split(Regex("\n")).forEach{
-            val (direction, amount) = it.splitInTwo(" ")
+            val (direction, amount) = it.parseCommand()
             point = point.navigate(when(direction) {
                 "forward" -> "R"
                 "down" -> "D"
                 "up" -> "U"
                 else -> ""
-            }, amount.toInt())
+            }, amount)
         }
         return point.x * point.y
     }
@@ -38,14 +38,16 @@ class Day2 : AdventSolution(
     override fun solveProblem2(input: String): Any? {
         var point = Point3D(0, 0, 0)
         input.split(Regex("\n")).forEach{
-            val (direction, amount) = it.splitInTwo(" ")
+            val (direction, amount) = it.parseCommand()
             point = when(direction) {
-                "forward" -> point.add(x = amount.toInt(), y = point.z * amount.toInt())
-                "down" -> point.add(z = amount.toInt())
-                "up" -> point.add(z = -1 * amount.toInt())
+                "forward" -> point.add(x = amount, y = point.z * amount)
+                "down" -> point.add(z = amount)
+                "up" -> point.add(z = amount * -1)
                 else -> point
             }
         }
         return point.x * point.y
     }
+
+    private fun String.parseCommand() = splitInTwo(" ").let { (a, b) -> Pair(a, b.toInt()) }
 }
