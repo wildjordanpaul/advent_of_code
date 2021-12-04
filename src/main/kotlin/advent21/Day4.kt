@@ -60,31 +60,36 @@ class Day4 : AdventSolution(
     private fun playBingo(input: String, returnWinner: Boolean): Int {
         val inputs = input.split(Regex("\n\n"))
         val numbers = inputs.first().splitInts()
-        val rawBoards = inputs.drop(1).map{
-            it.trim().split(Regex("\n")).map { a ->
-                a.trim().splitInts(Regex("\\s+"))
-            }
-        }
-        val boards = rawBoards.map { rows ->
-            val columns = (0 until 5).map { i -> rows.map { it[i] } }
-            val possibilities = mutableSetOf<Set<Int>>()
-            possibilities.addAll(rows.map(List<Int>::toSet))
-            possibilities.addAll(columns.map(List<Int>::toSet))
-            possibilities
-        }
+        val boards = inputs.drop(1).map(::Board)
         val calledNumbers = mutableSetOf<Int>()
         val winners = mutableSetOf<Int>()
         numbers.forEach { number ->
             calledNumbers.add(number)
             boards.forEachIndexed { i, board ->
-                if(!winners.contains(i) && board.any{ possibility -> calledNumbers.containsAll(possibility) }) {
+                if(!winners.contains(i) && board.hasWinWith(calledNumbers)) {
                     winners.add(i)
-                    if(returnWinner || winners.count() == rawBoards.count()) {
-                        return rawBoards[i].flatten().subtract(calledNumbers).sum() * number
+                    if(returnWinner || winners.count() == boards.count()) {
+                        return board.score(calledNumbers) * number
                     }
                 }
             }
         }
         return 0
+    }
+
+    data class Board(val data: String) {
+        private val rows = data.trim()
+            .split(Regex("\n"))
+            .map { a -> a.trim().splitInts(Regex("\\s+")) }
+        private val columns = (0 until 5).map { i -> rows.map { it[i] } }
+        private val possibilities = rows + columns
+
+        fun hasWinWith(calledNumbers: Collection<Int>): Boolean {
+            return possibilities.any{ calledNumbers.containsAll(it) }
+        }
+
+        fun score(calledNumbers: Collection<Int>): Int {
+            return rows.flatten().subtract(calledNumbers).sum()
+        }
     }
 }
