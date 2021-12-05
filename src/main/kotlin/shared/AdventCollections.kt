@@ -23,3 +23,8 @@ fun String.splitInTwo(delimiter: String = ","): Pair<String,String> {
     val pieces = split(delimiter, limit=2)
     return Pair(pieces.first(), pieces.last())
 }
+
+fun <R> String.splitInTwo(delimiter: String = ",", op: (String) -> R): Pair<R, R> {
+    val pieces = split(delimiter, limit=2)
+    return Pair(op(pieces.first()), op(pieces.last()))
+}
