@@ -1,6 +1,7 @@
 package shared
 
 import kotlin.math.abs
+import kotlin.math.absoluteValue
 
 data class Point(val x: Int = 0, val y: Int = 0) {
 
@@ -59,6 +60,24 @@ data class Point(val x: Int = 0, val y: Int = 0) {
             270 -> Point(y, x * -1)
             0 -> this
             else -> throw IllegalArgumentException("Invalid rotation: $degrees")
+        }
+    }
+    
+    fun straightPathTo(end: Point, includeDiagonals: Boolean = true): List<Point> {
+        return if (x == end.x) {
+            val ends = listOf(y, end.y).sorted()
+            (ends.first()..ends.last()).map { Point(x, it) }
+        } else if (y == end.y) {
+            val ends = listOf(x, end.x).sorted()
+            (ends.first()..ends.last()).map { Point(it, y) }
+        } else if(includeDiagonals && (x - end.x).absoluteValue == (y - end.y).absoluteValue) {
+            (0..(x - end.x).absoluteValue).map {
+                val newX = if(x < end.x) x + it else x - it
+                val newY = if(y < end.y) y + it else y - it
+                Point(newX, newY)
+            }
+        } else {
+            emptyList()
         }
     }
 }

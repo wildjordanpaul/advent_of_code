@@ -48,20 +48,6 @@ class Day5 : AdventSolution(
         val (start, end) = splitInTwo(" -> ") { points ->
             Point(points.splitInTwo(",") { it.toInt() })
         }
-        return if (start.x == end.x) {
-            val ends = listOf(start.y, end.y).sorted()
-            (ends.first()..ends.last()).map { Point(start.x, it) }
-        } else if (start.y == end.y) {
-            val ends = listOf(start.x, end.x).sorted()
-            (ends.first()..ends.last()).map { Point(it, start.y) }
-        } else if(includeDiagonals && (start.x - end.x).absoluteValue == (start.y - end.y).absoluteValue) {
-            (0..(start.x - end.x).absoluteValue).map {
-                val newX = if(start.x < end.x) start.x + it else start.x - it
-                val newY = if(start.y < end.y) start.y + it else start.y - it
-                Point(newX, newY)
-            }
-        } else {
-            emptyList()
-        }
+        return start.straightPathTo(end, includeDiagonals)
     }
 }
