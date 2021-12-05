@@ -1,7 +1,8 @@
 package advent21
 
-import shared.*
-import kotlin.math.absoluteValue
+import shared.AdventSolution
+import shared.Point
+import shared.splitInTwo
 
 class Day5 : AdventSolution(
     mapOf("""
