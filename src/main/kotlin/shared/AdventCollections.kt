@@ -28,3 +28,7 @@ fun <R> String.splitInTwo(delimiter: String = ",", op: (String) -> R): Pair<R, R
     val pieces = split(delimiter, limit=2)
     return Pair(op(pieces.first()), op(pieces.last()))
 }
+
+fun Collection<Int>.max() = maxOf { it }
+fun Collection<Int>.min() = minOf { it }
+
