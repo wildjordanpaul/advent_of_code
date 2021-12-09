@@ -16,6 +16,10 @@ data class Point(val x: Int = 0, val y: Int = 0) {
         }
     }
 
+    val directAdjacents by lazy {
+        listOf(above(), below(), right(), left())
+    }
+
     fun below(i: Int = 1) = Point(x, y+i)
     fun right(i: Int = 1) = Point(x+i, y)
     fun left(i: Int = 1) = Point(x-i, y)
