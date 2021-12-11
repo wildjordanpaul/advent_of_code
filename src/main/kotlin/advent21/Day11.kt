@@ -55,11 +55,12 @@ class Day11 : AdventSolution(
     private fun Map<Point, Int>.findFlashes(): Pair<Map<Point, Int>, Set<Point>> {
         val flashes = mutableSetOf<Point>()
         val map = mapValues { (point, number) ->
-            if(number == 9) {
-                flashes.add(point)
-                0
-            } else {
-                number + 1
+            when (number) {
+                9 -> {
+                    flashes.add(point)
+                    0
+                }
+                else -> number + 1
             }
         }.toMutableMap()
 
