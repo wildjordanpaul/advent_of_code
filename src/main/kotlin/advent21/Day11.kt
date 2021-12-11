@@ -56,11 +56,8 @@ class Day11 : AdventSolution(
         val flashes = mutableSetOf<Point>()
         val map = mapValues { (point, number) ->
             when (number) {
-                9 -> {
-                    flashes.add(point)
-                    0
-                }
-                else -> number + 1
+                9 -> { flashes.add(point); 0 }
+                else -> { number + 1 }
             }
         }.toMutableMap()
 
@@ -69,15 +66,9 @@ class Day11 : AdventSolution(
             flashes.addAll(newFlashes)
             newFlashes = newFlashes.flatMap(Point::adjacents).mapNotNull { point ->
                 when(val value = map[point]) {
-                    9 -> {
-                        map[point] = 0
-                        point
-                    }
-                    0, null -> null
-                    else -> {
-                        map[point] = value + 1
-                        null
-                    }
+                    9 -> { map[point] = 0; point }
+                    0, null -> { null }
+                    else -> { map[point] = value + 1; null }
                 }
             }.toSet()
         }
