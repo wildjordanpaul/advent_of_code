@@ -19,6 +19,8 @@ fun String.splitDoubles(delimiter: Regex = DEFAULT_DELIMITER) = split(delimiter)
 fun Iterable<Point>.rangeX() = (minByOrNull(Point::x)?.x ?: 0)..(maxByOrNull(Point::x)?.x ?: 0)
 fun Iterable<Point>.rangeY() = (minByOrNull(Point::y)?.y ?: 0)..(maxByOrNull(Point::y)?.y ?: 0)
 
+fun <A> Pair<A, A>.reverse() = Pair<A, A>(second, first)
+
 fun String.splitInTwo(delimiter: String = ","): Pair<String,String> {
     val pieces = split(delimiter, limit=2)
     return Pair(pieces.first(), pieces.last())
