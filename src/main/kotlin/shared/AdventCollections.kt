@@ -1,6 +1,7 @@
 package shared
 
 import java.math.BigInteger
+import java.util.*
 
 inline fun <T> Iterable<T>.forEachPair(action: (Pair<T,T>) -> Unit) {
     this.forEach { x ->
@@ -64,5 +65,26 @@ fun <R> MutableMap<R, BigInteger>.inc(key: R) {
 
 fun <R> MutableMap<R, BigInteger>.dec(key: R) {
     this[key] = getOrDefault(key, BigInteger.ZERO).dec()
+}
+
+fun Collection<Point>.shortestDistance(from: Point, to: Point, edge: (Point, Point) -> Int): Int? {
+    val visited = mutableSetOf<Point>()
+    val distanceMap = mutableMapOf(Point(0, 0) to 0)
+    val queue = PriorityQueue<Vector>(compareBy { it.distance })
+    queue.add(Vector(from, 0))
+
+    while(queue.isNotEmpty()) {
+        val current = queue.poll()
+        current.point.directAdjacents.filter { contains(it) && !visited.contains(it) }.forEach { neighbor ->
+            val neighborDistance = distanceMap[neighbor]
+            val newDistance = current.distance + edge(current.point, neighbor)
+            if(neighborDistance == null || newDistance < neighborDistance) {
+                distanceMap[neighbor] = newDistance
+                queue.add(Vector(neighbor, newDistance))
+            }
+        }
+    }
+
+    return distanceMap[to]
 }
 

@@ -2,6 +2,7 @@ package advent21
 
 import shared.AdventSolution
 import shared.Point
+import shared.shortestDistance
 import java.util.*
 
 class Day15 : AdventSolution(
@@ -58,25 +59,9 @@ class Day15 : AdventSolution(
     private data class Edge(val point: Point, val risk: Int)
 
     private fun Map<Point, Int>.minRiskLevel(): Int? {
-        val visited = mutableSetOf<Point>()
-        val riskLevels = mutableMapOf(Point(0, 0) to 0)
-        val maxX = maxOf { it.key.x }
-        val maxY = maxOf { it.key.y }
-        val queue = PriorityQueue<Edge>(compareBy { it.risk })
-        queue.add(Edge(Point(0, 0), 0))
-
-        while(queue.isNotEmpty()) {
-            val current = queue.poll()
-            current.point.directAdjacents.filter { contains(it) && !visited.contains(it) }.forEach { neighbor ->
-                val neighborRisk = riskLevels[neighbor]
-                val newRisk = current.risk + this[neighbor]!!
-                if(neighborRisk == null || newRisk < neighborRisk) {
-                    riskLevels[neighbor] = newRisk
-                    queue.add(Edge(neighbor, newRisk))
-                }
-            }
-        }
-
-        return riskLevels[Point(maxX, maxY)]
+        return keys.shortestDistance(
+            Point(0, 0),
+            Point(keys.maxOf { it.x }, keys.maxOf { it.y })
+        ) { _, to -> this[to]!! }
     }
 }
