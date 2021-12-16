@@ -34,6 +34,10 @@ fun <R> String.splitInTwo(delimiter: String = ",", op: (String) -> R): Pair<R, R
     return Pair(op(pieces.first()), op(pieces.last()))
 }
 
+fun String.splitAt(index: Int): Pair<String, String> {
+    return Pair(substring(0 until index), substring(index until length))
+}
+
 fun Collection<Int>.max() = maxOf { it }
 fun Collection<Int>.min() = minOf { it }
 
