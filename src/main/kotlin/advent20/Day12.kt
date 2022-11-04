@@ -43,7 +43,6 @@ class Day12 : AdventSolution(
     }
 
     override fun solveProblem2(input: String): Any {
-        var facing = 1
         var point = Point(0,0)
         var waypoint = Point(10,-1)
 

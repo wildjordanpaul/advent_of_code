@@ -69,6 +69,7 @@ class Day8 : AdventSolution(
                     instructions.run()?.let { return it }
                     instructions[i] = instruction
                 }
+                else -> {}
             }
         }
 

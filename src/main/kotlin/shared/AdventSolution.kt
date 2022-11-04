@@ -58,7 +58,7 @@ abstract class AdventSolution(
         println("PASSED ALL TESTS: $passedTests")
 
         if(!skip1 && input1.isNotBlank()) {
-            var solution: Any? = null
+            var solution: Any?
             val ms = measureTimeMillis {
                 solution = solveProblem1(input1)
             }
@@ -69,7 +69,7 @@ abstract class AdventSolution(
             }
         }
         if(!skip2 && input2.isNotBlank()) {
-            var solution: Any? = null
+            var solution: Any?
             val ms = measureTimeMillis {
                 solution = solveProblem2(input2)
             }
