@@ -10,10 +10,10 @@ class DayTemplate : AdventSolution(
     pullInputFromNorthPole = true
 ) {
     override fun solveProblem1(input: String): Any? {
-        TODO("Not yet implemented")
+        return null
     }
 
     override fun solveProblem2(input: String): Any? {
-        TODO("Not yet implemented")
+        return null
     }
 }
