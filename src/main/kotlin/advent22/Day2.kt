@@ -60,11 +60,7 @@ class Day2 : AdventSolution(
             SCISSORS -> ROCK
         }
 
-        fun lose() = when(this) {
-            ROCK -> SCISSORS
-            PAPER -> ROCK
-            SCISSORS -> PAPER
-        }
+        fun lose() = win().win()
 
         fun against(p2: Play): Result {
             return when (p2) {
