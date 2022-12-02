@@ -19,7 +19,7 @@ class Day2 : AdventSolution(
 ) {
     override fun solveProblem1(input: String): Any? {
         return input.splitLines().sumOf { line ->
-            val (p1, p2) = line.splitInTwo(" ") { c -> toPlay(c.first()) }
+            val (p1, p2) = line.splitInTwo(" ", ::toPlay)
             p1.against(p2).points + p2.points
         }
     }
@@ -27,14 +27,14 @@ class Day2 : AdventSolution(
     override fun solveProblem2(input: String): Any? {
         return input.splitLines().sumOf {
             val (p1, p2) = it.splitInTwo(" ")
-            val play = toPlay(p1.first())
-            val result = toResult(p2.first())
+            val play = toPlay(p1)
+            val result = toResult(p2)
             play.forResult(result).points + result.points
         }
     }
 
-    private fun toPlay(c: Char): Play {
-        return when(c) {
+    private fun toPlay(s: String): Play {
+        return when(s.first()) {
             'A', 'X' -> Play.ROCK
             'B', 'Y' -> Play.PAPER
             'C', 'Z' -> Play.SCISSORS
@@ -42,8 +42,8 @@ class Day2 : AdventSolution(
         }!!
     }
 
-    private fun toResult(c: Char): Result {
-        return when(c) {
+    private fun toResult(s: String): Result {
+        return when(s.first()) {
             'X' -> Result.LOSE
             'Y' -> Result.TIE
             'Z' -> Result.WIN
