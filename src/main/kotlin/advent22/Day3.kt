@@ -1,6 +1,8 @@
 package advent22
 
 import shared.AdventSolution
+import shared.splitAt
+import shared.mapBoth
 import shared.splitLines
 
 class Day3 : AdventSolution(
@@ -16,8 +18,7 @@ class Day3 : AdventSolution(
 ) {
     override fun solveProblem1(input: String): Any? {
         return input.splitLines().sumOf {line ->
-            val r1 = line.substring(0, line.length/2).toSet()
-            val r2 = line.substring(line.length/2, line.length).toSet()
+            val (r1, r2) = line.splitAt(line.length/2).mapBoth(String::toSet)
             r1.intersect(r2).first().priority()
         }
     }
