@@ -10,12 +10,7 @@ class Day2 : AdventSolution(
         B X
         C Z
     """.trimIndent() to 15),
-    mapOf("""
-        A Y
-        B X
-        C Z 
-    """.trimIndent() to 12),
-    pullInputFromNorthPole = true
+    12
 ) {
     override fun solveProblem1(input: String): Any? {
         return input.splitLines().sumOf { line ->
@@ -52,7 +47,7 @@ class Day2 : AdventSolution(
     }
 
     private enum class Play(val points: Int) {
-        ROCK(1), PAPER( 2), SCISSORS( 3);
+        ROCK(1), PAPER(2), SCISSORS(3);
 
         fun win() = when(this) {
             ROCK -> PAPER

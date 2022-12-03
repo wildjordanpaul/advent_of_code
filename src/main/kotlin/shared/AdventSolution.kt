@@ -8,8 +8,16 @@ abstract class AdventSolution(
         val testCases2: Map<String, Any> = mapOf(),
         var input1: String = "",
         var input2: String = input1,
-        val pullInputFromNorthPole: Boolean = false
+        val pullInputFromNorthPole: Boolean = true
 ) {
+
+    constructor(
+        testCases1: Map<String, Any>,
+        testResult2: Any
+    ): this(
+        testCases1,
+        mapOf(testCases1.keys.first() to testResult2)
+    )
 
     private val day by lazy { javaClass.name.split(".").last().replace(Regex("[^0-9]"), "").toInt() }
     private val year by lazy { 2000 + javaClass.name.split(".").first().replace(Regex("[^0-9]"), "").toInt() }
@@ -43,14 +51,18 @@ abstract class AdventSolution(
         var passedTests = 0
         if(!skip1) {
             testCases1.forEach { (input, output) ->
-                assertEquals(output.toString(), solveProblem1(input).toString())
+                val solution = solveProblem1(input)
+                if(solution != null)
+                    assertEquals(output.toString(), solution.toString())
                 passedTests++
             }
         }
 
         if(!skip2) {
             testCases2.forEach { (input, output) ->
-                assertEquals(output.toString(), solveProblem2(input).toString())
+                val solution = solveProblem2(input)
+                if(solution != null)
+                    assertEquals(output.toString(), solution.toString())
                 passedTests++
             }
         }
