@@ -14,14 +14,14 @@ class Day4 : AdventSolution(
     4
 ) {
     override fun solveProblem1(input: String): Any? {
-        return input.splitLines("\n").count { line ->
+        return input.split("\n").count { line ->
             val (e1, e2) = line.splitInTwo(",", String::toRange)
             e1.all { e2.contains(it) } || e2.all { e1.contains(it) }
         }
     }
 
     override fun solveProblem2(input: String): Any? {
-        return input.splitLines("\n").count { line ->
+        return input.split("\n").count { line ->
             val (e1, e2) = line.splitInTwo(",", String::toRange)
             e1.intersect(e2).isNotEmpty()
         }
