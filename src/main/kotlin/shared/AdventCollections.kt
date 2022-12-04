@@ -13,12 +13,16 @@ inline fun <T> Iterable<T>.forEachPair(action: (Pair<T,T>) -> Unit) {
 
 val DEFAULT_DELIMITER = Regex("""[,\n]""")
 fun String.splitLines(delimiter: Regex = DEFAULT_DELIMITER) = split(delimiter).map(String::trim).filter(String::isNotBlank)
+fun String.splitLines(delimiter: String) = split(delimiter).map(String::trim).filter(String::isNotBlank)
 fun String.splitInts(delimiter: String) = split(delimiter).map(String::trim).map(String::toInt)
 fun String.splitInts(delimiter: Regex = DEFAULT_DELIMITER) = splitLines(delimiter).map(String::toInt)
 fun String.splitLongs(delimiter: String) = split(delimiter).map(String::trim).filter(String::isNotBlank).map(String::toLong)
 fun String.splitLongs(delimiter: Regex = DEFAULT_DELIMITER) = splitLines(delimiter).map(String::toLong)
 fun String.splitDoubles(delimiter: String) = split(delimiter).map(String::trim).filter(String::isNotBlank).map(String::toDouble)
 fun String.splitDoubles(delimiter: Regex = DEFAULT_DELIMITER) = splitLines(delimiter).map(String::toDouble)
+
+fun Pair<Int, Int>.toRange() = first..second
+fun String.toRange(delimiter: String = "-") = splitInTwo(delimiter).mapBoth(String::toInt).toRange()
 
 fun Iterable<Point>.rangeX() = (minByOrNull(Point::x)?.x ?: 0)..(maxByOrNull(Point::x)?.x ?: 0)
 fun Iterable<Point>.rangeY() = (minByOrNull(Point::y)?.y ?: 0)..(maxByOrNull(Point::y)?.y ?: 0)
