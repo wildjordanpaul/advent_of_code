@@ -7,7 +7,7 @@ import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
 
-class AdventPuller {
+class AdventPuller(private val trimInput: Boolean = false) {
 
     private val cacheDir: File by lazy {
         val f = File("advent_input_cache")
@@ -40,7 +40,10 @@ class AdventPuller {
         client.newCall(request.build()).execute().use { response ->
             return if(response.code == 504 && fromCache)
                 pull(day, year, false)
-            else response.body!!.string().trim()
+            else {
+                val body = response.body!!.string()
+                if (trimInput) body.trim() else body
+            }
         }
     }
 }

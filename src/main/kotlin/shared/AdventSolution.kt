@@ -8,20 +8,23 @@ abstract class AdventSolution(
         val testCases2: Map<String, Any> = mapOf(),
         var input1: String = "",
         var input2: String = input1,
-        val pullInputFromNorthPole: Boolean = true
+        val pullInputFromNorthPole: Boolean = true,
+        val trimInput: Boolean = false
 ) {
 
     constructor(
         testCases1: Map<String, Any>,
-        testResult2: Any
+        testResult2: Any,
+        trimInput: Boolean = false
     ): this(
         testCases1,
-        mapOf(testCases1.keys.first() to testResult2)
+        mapOf(testCases1.keys.first() to testResult2),
+        trimInput = trimInput
     )
 
     private val day by lazy { javaClass.name.split(".").last().replace(Regex("[^0-9]"), "").toInt() }
     private val year by lazy { 2000 + javaClass.name.split(".").first().replace(Regex("[^0-9]"), "").toInt() }
-    private val puller by lazy  { AdventPuller() }
+    private val puller by lazy  { AdventPuller(trimInput) }
     private val pusher by lazy  { AdventPusher() }
 
     init {
