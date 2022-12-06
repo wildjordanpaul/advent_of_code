@@ -1,7 +1,7 @@
 package shared
 
 fun main() {
-    advent22.Day5().solve(
+    advent22.Day6().solve(
         skip1 = false,
         push1 = false,
         skip2 = false,
