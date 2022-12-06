@@ -27,7 +27,7 @@ class Day6 : AdventSolution(
     }
 
     private fun String.indexOfMarker(n: Int): Int {
-        val q = ArrayDeque<Char>()
+        val q = mutableListOf<Char>()
         return indexOfFirst { l ->
             q.add(l)
             if(q.size > n) q.removeFirst()
