@@ -19,9 +19,9 @@ class Day8 : AdventSolution(
         val map = input.toPointMap(String::toInt)
         return map.count { (point, height) ->
             listOf('u','d','r','l').any { dir ->
-                var current: Point = point
+                var next: Point = point
                 do {
-                    val next = current.navigate(dir)
+                    next = next.navigate(dir)
                     map[next]?.let{ nextHeight ->
                         if(nextHeight >= height) return@any false
                     }
