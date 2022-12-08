@@ -21,7 +21,7 @@ class Day8 : AdventSolution(
             listOf('u','d','r','l').any { dir ->
                 var current: Point = point
                 do {
-                    val next = current.navigate(dir, 1)
+                    val next = current.navigate(dir)
                     map[next]?.let{ nextHeight ->
                         if(nextHeight >= height) return@any false
                     }
@@ -38,15 +38,15 @@ class Day8 : AdventSolution(
                 var next: Point = point
                 var score = 0
                 do {
-                    next = next.navigate(dir, 1)
+                    next = next.navigate(dir)
                     map[next]?.let{ nextHeight ->
                         score += 1
                         if(nextHeight >= height) return@map score
                     }
                 } while(map.containsKey(next))
                 score
-            }.fold(BigInteger.ONE) { bi, score ->
-                bi.times(score.toBigInteger())
+            }.fold(BigInteger.ONE) { total, score ->
+                total.times(score.toBigInteger())
             }
         }
     }
