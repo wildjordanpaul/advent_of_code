@@ -24,6 +24,10 @@ fun String.splitDoubles(delimiter: Regex = DEFAULT_DELIMITER) = splitLines(delim
 fun Pair<Int, Int>.toRange() = first..second
 fun String.toRange(delimiter: String = "-") = splitInTwo(delimiter).mapBoth(String::toInt).toRange()
 
+fun <R> String.toPointMap(op: (String) -> R) = splitLines().flatMapIndexed { y, line ->
+    line.mapIndexed { x, c -> Point(x,y) to op(c.toString()) }
+}.toMap()
+
 fun Iterable<Point>.rangeX() = (minByOrNull(Point::x)?.x ?: 0)..(maxByOrNull(Point::x)?.x ?: 0)
 fun Iterable<Point>.rangeY() = (minByOrNull(Point::y)?.y ?: 0)..(maxByOrNull(Point::y)?.y ?: 0)
 
