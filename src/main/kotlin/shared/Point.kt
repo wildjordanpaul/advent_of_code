@@ -85,4 +85,17 @@ data class Point(val x: Int = 0, val y: Int = 0) {
             emptyList()
         }
     }
+
+    fun follow(leader: Point, maintainDistance: Int = 1, stepAmount: Int = 1): Point {
+        val diffX = leader.x - x
+        val diffY = leader.y - y
+        var newX = if(diffX > maintainDistance) x+stepAmount else if(diffX < maintainDistance*-1) x-stepAmount else x
+        var newY = if(diffY > maintainDistance) y+stepAmount else if(diffY < maintainDistance*-1) y-stepAmount else y
+        if (diffX == maintainDistance && diffY.absoluteValue > maintainDistance) newX += stepAmount
+        if (diffX == maintainDistance*-1 && diffY.absoluteValue > maintainDistance) newX -= stepAmount
+        if (diffY == maintainDistance && diffX.absoluteValue > maintainDistance) newY += stepAmount
+        if (diffY == maintainDistance*-1 && diffX.absoluteValue > maintainDistance) newY -= stepAmount
+
+        return Point(newX, newY)
+    }
 }
