@@ -47,14 +47,11 @@ class Day11 : AdventSolution(
     private fun calculateWorryLevels(input: String, rounds: Int, managingWorry: Boolean = true): BigInteger {
         val monkeys = input.split("\n\n").map(::toMonkey).associateBy { it.id }
         val lcd = monkeys.map { it.value.divider }.fold(BigInteger.ONE) { acc, next -> acc.times(next) }
-        repeat(rounds) { round ->
+        repeat(rounds) { _ ->
             monkeys.values.forEach { monkey ->
                 monkey.inspectItems(managingWorry, lcd).forEach { (id, items) ->
                     monkeys.getValue(id).add(items)
                 }
-            }
-            if((round + 1) % 100 == 0) {
-                println(monkeys.values.joinToString(", ") { "${it.id}-${it.inspectionCount}" })
             }
         }
         val topTwo = monkeys.values.map { it.inspectionCount }.sorted().takeLast(2)
@@ -64,7 +61,11 @@ class Day11 : AdventSolution(
     private fun toMonkey(input: String): Monkey {
         val lines = input.split("\n")
         val id = lines[0].split(" ").last().dropLast(1)
-        val items = lines[1].split(": ").last().split(Regex("[ ,]")).filter(String::isNotBlank).map { Item(it.toBigInteger()) }.toMutableList()
+        val items = lines[1].split(": ").last()
+            .split(Regex("[ ,]"))
+            .filter(String::isNotBlank)
+            .map { Item(it.toBigInteger()) }
+            .toMutableList()
 
         val (opCode, opAmountString) = lines[2].split("= old ").last().splitInTwo(" ")
         val op: (BigInteger) -> BigInteger = { old ->
