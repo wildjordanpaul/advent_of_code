@@ -21,8 +21,7 @@ class Day12 : AdventSolution(
         val start = map.findKey('S')
         val end = map.findKey('E')
 
-        val path = graph.shortestPath(start, end)!!
-        return path.size
+        return graph.shortestPath(start, end)!!.size
     }
 
     override fun solveProblem2(input: String): Any? {
