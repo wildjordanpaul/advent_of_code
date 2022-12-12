@@ -117,9 +117,11 @@ fun <R> Map<Point, R>.toGraph(op: (Pair<Point, R>, Pair<Point, R>) -> Boolean): 
     }
 }
 data class Path(val point: Point, val list: List<Point>)
+
+// Dijkstra's
 fun Map<Point, List<Point>>.shortestPath(from: Point, dest: Point): List<Point>? {
     val visited = mutableSetOf<Point>()
-    val pathCache = mutableMapOf<Point, List<Point>>()
+    val pathCache = mutagbleMapOf<Point, List<Point>>()
     val queue = PriorityQueue<Path>(compareBy { it.list.size })
     queue.add(Path(from, listOf()))
 
