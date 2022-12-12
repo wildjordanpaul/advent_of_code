@@ -105,3 +105,36 @@ fun Collection<Point>.shortestDistance(from: Point, to: Point, edge: (Point, Poi
     return distanceMap[to]
 }
 
+fun <K, V> Map<K, V>.findKey(value: V): K = entries.find { it.value == value }!!.key
+
+fun <R> Map<Point, R>.toGraph(op: (Pair<Point, R>, Pair<Point, R>) -> Boolean): Map<Point, List<Point>> {
+    return mapValues { entry ->
+        entry.key.directAdjacents.filter { point ->
+            val nextVal = this[point]
+            if(nextVal == null) false
+            else op(entry.key to entry.value, point to nextVal)
+        }
+    }
+}
+data class Path(val point: Point, val list: List<Point>)
+fun Map<Point, List<Point>>.shortestPath(from: Point, dest: Point): List<Point>? {
+    val visited = mutableSetOf<Point>()
+    val pathCache = mutableMapOf<Point, List<Point>>()
+    val queue = PriorityQueue<Path>(compareBy { it.list.size })
+    queue.add(Path(from, listOf()))
+
+    while(queue.isNotEmpty()) {
+        val current = queue.poll()
+        this[current.point]!!.filter { !visited.contains(it) }.forEach { neighbor ->
+            val cachedPath = pathCache[neighbor]
+            val newPath = listOf(neighbor) + current.list
+            if(cachedPath == null || newPath.size < cachedPath.size) {
+                pathCache[neighbor] = newPath
+                queue.add(Path(neighbor, newPath))
+            }
+        }
+    }
+
+    return pathCache[dest]
+}
+
