@@ -140,3 +140,17 @@ fun Map<Point, List<Point>>.shortestPath(from: Point, dest: Point): List<Point>?
     return pathCache[dest]
 }
 
+public inline fun <T> Iterable<T>.flatFold(operation: (T, T) -> List<T>): List<T> {
+    val iterator = this.iterator()
+    if (!iterator.hasNext()) return emptyList()
+    var last = iterator.next()
+    if (!iterator.hasNext()) return emptyList()
+    var accumulator = mutableListOf<T>()
+    while (iterator.hasNext()) {
+        val next = iterator.next()
+        accumulator.addAll(operation(last, next))
+        last = next
+    }
+    return accumulator
+}
+

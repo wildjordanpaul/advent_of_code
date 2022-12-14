@@ -2,6 +2,7 @@ package advent22
 
 import shared.AdventSolution
 import shared.Point
+import shared.flatFold
 import shared.splitInTwo
 
 class Day14 : AdventSolution(
@@ -14,11 +15,11 @@ class Day14 : AdventSolution(
     override fun solveProblem1(input: String): Any? {
         val blocked = input.toRocks()
         val rockCount = blocked.size
-        val abyss = blocked.maxOf { it.y }
+        val abyss = blocked.maxOf(Point::y)
         while(true) {
-            val next = drop(blocked, abyss)
-            if(next == null) return blocked.size - rockCount
-            else blocked.add(next)
+            drop(abyss) { !blocked.contains(it) }
+                ?.let(blocked::add)
+                ?: return blocked.size - rockCount
         }
         return null
     }
@@ -28,46 +29,29 @@ class Day14 : AdventSolution(
         val rockCount = blocked.size
         val floor = blocked.maxOf { it.y } + 2
         while(true) {
-            val next = drop2(blocked, floor)
-            blocked.add(next)
+            val next = drop {
+                it.y != floor && !blocked.contains(it)
+            }?.also(blocked::add)
             if(next == Point(500, 0)) return blocked.size - rockCount
         }
     }
 
-    private fun drop(blocked: Set<Point>, abyss: Int): Point? {
+    private fun drop(abyss: Int? = null, isOpen: (Point) -> Boolean): Point? {
         var current = Point(500, 0)
         while(true) {
-            var next = current.below()
-            if(next.y > abyss) return null
-            if(blocked.contains(next)) next = next.left()
-            if(blocked.contains(next)) next = next.right(2)
-            if(blocked.contains(next)) return current
-            current = next
-        }
-    }
-
-    private fun drop2(blocked: Set<Point>, floor: Int): Point {
-        var current = Point(500, 0)
-        while(true) {
-            var next = current.below()
-            if(next.y == floor) return current
-            if(blocked.contains(next)) next = next.left()
-            if(blocked.contains(next)) next = next.right(2)
-            if(blocked.contains(next)) return current
+            var below = current.below()
+            if(abyss != null && below.y > abyss) return null
+            val next = listOf(below, below.left(), below.right())
+                .firstOrNull(isOpen) ?: return current
             current = next
         }
     }
 
     private fun String.toRocks(): MutableSet<Point> {
         return split("\n").filter(String::isNotBlank).flatMap { line ->
-            line.split(" -> ").map { p ->
-                Point(p.splitInTwo(",", String::toInt))
-            }.fold(mutableListOf<Point>()) { acc, next ->
-                val last = acc.lastOrNull()
-                if(last != null) acc.addAll(last.straightPathTo(next))
-                acc.add(next)
-                acc
-            }
+            line.split(" -> ")
+                .map { p -> Point(p.splitInTwo(",", String::toInt)) }
+                .flatFold { p1, p2 -> p1.straightPathTo(p2) }
         }.toMutableSet()
     }
 
