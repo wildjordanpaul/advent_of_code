@@ -18,7 +18,7 @@ class Day14 : AdventSolution(
         val abyss = blocked.maxOf(Point::y)
         while(true) {
             drop(abyss) { !blocked.contains(it) }
-                ?.let(blocked::add)
+                ?.also(blocked::add)
                 ?: return blocked.size - rockCount
         }
         return null
