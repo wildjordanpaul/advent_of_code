@@ -27,6 +27,7 @@ data class Point(val x: Int = 0, val y: Int = 0) {
     fun above(i: Int = 1) = Point(x, y-i)
 
     fun manhattanDistance(offsetX: Int = 0, offsetY: Int = 0) = abs(x - offsetX) + abs(y - offsetY)
+    fun manhattanDistance(point: Point) = manhattanDistance(point.x, point.y)
 
     fun navigate(char: Char, amount: Int = 1): Point {
         return when(char.uppercaseChar()) {

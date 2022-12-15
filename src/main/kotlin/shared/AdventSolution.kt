@@ -1,5 +1,7 @@
 package shared
 
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlin.system.measureTimeMillis
 import kotlin.test.assertEquals
 
@@ -26,6 +28,10 @@ abstract class AdventSolution(
     private val year by lazy { 2000 + javaClass.name.split(".").first().replace(Regex("[^0-9]"), "").toInt() }
     private val puller by lazy  { AdventPuller(trimInput) }
     private val pusher by lazy  { AdventPusher() }
+
+    suspend fun <A, B> Iterable<A>.parallelForEach(f: suspend (A) -> B): Unit = coroutineScope {
+        forEach { launch { f(it) } }
+    }
 
     init {
         if (pullInputFromNorthPole) {
