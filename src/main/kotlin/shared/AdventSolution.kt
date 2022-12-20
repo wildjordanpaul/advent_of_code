@@ -1,5 +1,7 @@
 package shared
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlin.system.measureTimeMillis
@@ -31,6 +33,10 @@ abstract class AdventSolution(
 
     suspend fun <A, B> Iterable<A>.parallelForEach(f: suspend (A) -> B): Unit = coroutineScope {
         forEach { launch { f(it) } }
+    }
+
+    suspend fun <A, B> Iterable<A>.parallelMap(f: suspend (A) -> B): List<B> = coroutineScope {
+        map { async { f(it) } }.awaitAll()
     }
 
     init {

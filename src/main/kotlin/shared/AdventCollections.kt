@@ -12,7 +12,8 @@ inline fun <T> Iterable<T>.forEachPair(action: (Pair<T,T>) -> Unit) {
 }
 
 val DEFAULT_DELIMITER = Regex("""[,\n]""")
-fun String.splitLines(delimiter: Regex = DEFAULT_DELIMITER) = split(delimiter).map(String::trim).filter(String::isNotBlank)
+val DEFAULT_LINE_DELIMITER = Regex("""[\n]""")
+fun String.splitLines(delimiter: Regex = DEFAULT_LINE_DELIMITER) = split(delimiter).map(String::trim).filter(String::isNotBlank)
 fun String.splitLines(delimiter: String) = split(delimiter).map(String::trim).filter(String::isNotBlank)
 fun String.splitInts(delimiter: String) = split(delimiter).map(String::trim).map(String::toInt)
 fun String.splitInts(delimiter: Regex = DEFAULT_DELIMITER) = splitLines(delimiter).map(String::toInt)
@@ -46,6 +47,8 @@ fun <R> String.splitInTwo(delimiter: String = ",", op: (String) -> R): Pair<R, R
 fun String.splitAt(index: Int): Pair<String, String> {
     return Pair(substring(0 until index), substring(index until length))
 }
+
+fun String.extractInt(): Int = replace(Regex("[^0-9-]"), "").toInt()
 
 fun <T, R> Pair<T, T>.mapBoth(op: (T) -> R): Pair<R, R> {
     return op(first) to op(second)
