@@ -154,3 +154,22 @@ public inline fun <T> Iterable<T>.flatFold(operation: (T, T) -> List<T>): List<T
     return accumulator
 }
 
+inline fun <T, R : Comparable<R>> Iterable<T>.minAndMaxOf(selector: (T) -> R): Pair<R, R> {
+    val iterator = iterator()
+    if (!iterator.hasNext()) throw NoSuchElementException()
+    var minValue = selector(iterator.next())
+    var maxValue = minValue
+    while (iterator.hasNext()) {
+        val v = selector(iterator.next())
+        if (minValue > v) {
+            minValue = v
+        }
+        if (maxValue < v) {
+            maxValue = v
+        }
+    }
+    return Pair(minValue, maxValue)
+}
+
+fun <T> LinkedHashSet<T>.pop(): T? = firstOrNull()?.also { remove(it) }
+
