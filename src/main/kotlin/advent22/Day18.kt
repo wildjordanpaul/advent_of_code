@@ -1,7 +1,10 @@
 package advent22
 
-import shared.*
-import shared.Point3D.Companion.ends
+import shared.AdventSolution
+import shared.Point3D
+import shared.Point3D.Companion.boundaries
+import shared.pop
+import shared.splitLines
 
 class Day18 : AdventSolution(
     mapOf("""
@@ -28,7 +31,7 @@ class Day18 : AdventSolution(
     override fun solveProblem2(input: String): Any? {
         val points = input.splitLines("\n").map(::Point3D).toSet()
         val sides = (points.flatMap(Point3D::directAdjacents) - points)
-        val (min, max) = sides.ends()
+        val (min, max) = sides.boundaries()
         val queue = LinkedHashSet<Point3D>().also { it.add(min) }
         val steam = mutableSetOf<Point3D>()
         while(queue.isNotEmpty()) {
