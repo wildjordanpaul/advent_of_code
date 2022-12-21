@@ -33,8 +33,8 @@ data class Point(val x: Int = 0, val y: Int = 0) {
         return when(char.uppercaseChar()) {
             'N','U' -> above(amount)
             'S','D' -> below(amount)
-            'W','L' -> left(amount)
-            'E','R' -> right(amount)
+            'W','L','<' -> left(amount)
+            'E','R','>' -> right(amount)
             else -> this
         }
     }
