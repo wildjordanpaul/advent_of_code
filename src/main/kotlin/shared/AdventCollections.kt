@@ -11,6 +11,8 @@ inline fun <T> Iterable<T>.forEachPair(action: (Pair<T,T>) -> Unit) {
     }
 }
 
+val NOT_NUMBER_REGEX = Regex("[^0-9-]+")
+val NUMBER_REGEX = Regex("[0-9-]+")
 val DEFAULT_DELIMITER = Regex("""[,\n]""")
 val DEFAULT_LINE_DELIMITER = Regex("""[\n]""")
 fun String.splitLines(delimiter: Regex = DEFAULT_LINE_DELIMITER) = split(delimiter).map(String::trim).filter(String::isNotBlank)

@@ -39,6 +39,16 @@ data class Point(val x: Int = 0, val y: Int = 0) {
         }
     }
 
+    fun navigateAway(char: Char, amount: Int = 1): Point {
+        return when(char.uppercaseChar()) {
+            'N','U' -> below(amount)
+            'S','D' -> above(amount)
+            'W','L','<' -> right(amount)
+            'E','R','>' -> left(amount)
+            else -> this
+        }
+    }
+
     fun navigate(path: String, amount: Int = 1): Point {
         var p = this
         if (Regex("[NESWUDLR]+").matches(path.uppercase())) {

@@ -40,10 +40,9 @@ class Day19 : AdventSolution(
                     val (minute, state) = queue.pop()!!
                     val nextMin = minute + 1
                     val next = state.cycle(blueprint)
-                    bestAt[nextMin] = max(next.maxOf { it.resources.geodes }, bestAt[nextMin]!!)
+                    bestAt[nextMin] = max(next.resources.geodes, bestAt[nextMin]!!)
                     if(nextMin < 24)
-                        queue.addAll(next.map { nextMin to it })
-
+                        queue.add(nextMin to next)
                 }
                 println("Finished blueprint ${blueprint.id}: ${bestAt[24]}")
                 bestAt[24]!! * blueprint.id
@@ -96,33 +95,40 @@ class Day19 : AdventSolution(
         val robots: Resources = Resources(1)
     ) {
 
-        fun cycle(blueprint: Blueprint): List<CaveState> {
-            val options = mutableListOf<CaveState>()
+        fun cycle(blueprint: Blueprint): CaveState {
 
-            if(resources >= blueprint.obsidianRobotCost) {
-                options.add(CaveState(
-                    resources - blueprint.obsidianRobotCost + robots,
-                    robots + Resources(obsidian = 1)
-                ))
+            if(resources >= blueprint.geodeRobotCost) {
+                return nextState(
+                    blueprint.geodeRobotCost,
+                    Resources(geodes = 1)
+                )
             }
 
-            if(resources >= blueprint.clayRobotCost) {
-                options.add(CaveState(
-                    resources - blueprint.clayRobotCost + robots,
-                    robots + Resources(clay = 1)
-                ))
+            val desiredGeodeRatio = blueprint.geodeRobotCost.obsidian / blueprint.geodeRobotCost.ore.toFloat()
+            val currentGeodeDeficit = desiredGeodeRatio - (robots.obsidian / robots.ore.toFloat())
+            val newGeodeDeficit = desiredGeodeRatio - (robots.obsidian + 1) / robots.ore.toFloat()
+            if(newGeodeDeficit < currentGeodeDeficit) {
+
+
             }
 
-            if(resources >= blueprint.oreRobotCost) {
-                options.add(CaveState(
-                    resources - blueprint.oreRobotCost + robots,
-                    robots + Resources(ore = 1)
-                ))
-            }
+//            if(resources >= blueprint.clayRobotCost) {
+//                options.add(CaveState(
+//                    resources - blueprint.clayRobotCost + robots,
+//                    robots + Resources(clay = 1)
+//                ))
+//            }
+//
+//            if(resources >= blueprint.oreRobotCost) {
+//                options.add(CaveState(
+//                    resources - blueprint.oreRobotCost + robots,
+//                    robots + Resources(ore = 1)
+//                ))
+//            }
+//
+//            options.add(CaveState(resources + robots, robots))
 
-            options.add(CaveState(resources + robots, robots))
-
-            return options
+            return nextState(Resources(), null)
         }
 
         fun nextState(costs: Resources, newRobots: Resources?) = CaveState(
