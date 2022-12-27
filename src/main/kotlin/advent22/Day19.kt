@@ -38,11 +38,13 @@ class Day19 : AdventSolution(
                 val queue = LinkedHashSet<Pair<Int, CaveState>>().also{ it.add(0 to CaveState()) }
                 while(queue.isNotEmpty()) {
                     val (minute, state) = queue.pop()!!
-                    val nextMin = minute + 1
-                    val next = state.cycle(blueprint)
-                    bestAt[nextMin] = max(next.resources.geodes, bestAt[nextMin]!!)
-                    if(nextMin < 24)
-                        queue.add(nextMin to next)
+                    if(state.resources.geodes >= bestAt[minute]!!) {
+                        val nextMin = minute + 1
+                        val next = state.cycle(blueprint)
+                        bestAt[nextMin] = max(next.maxOf { it.resources.geodes }, bestAt[nextMin]!!)
+                        if(nextMin < 24)
+                            queue.addAll(next.map { nextMin to it })
+                    }
                 }
                 println("Finished blueprint ${blueprint.id}: ${bestAt[24]}")
                 bestAt[24]!! * blueprint.id
@@ -95,43 +97,46 @@ class Day19 : AdventSolution(
         val robots: Resources = Resources(1)
     ) {
 
-        fun cycle(blueprint: Blueprint): CaveState {
+        fun cycle(blueprint: Blueprint): List<CaveState> {
+            val otherStates = mutableListOf(nextState())
 
             if(resources >= blueprint.geodeRobotCost) {
-                return nextState(
+                // assume building geode is always better than not
+                return listOf(nextState(
                     blueprint.geodeRobotCost,
                     Resources(geodes = 1)
+                ))
+            }
+
+            if(resources >= blueprint.obsidianRobotCost) {
+                val stateIfWeBuild = nextState(
+                    blueprint.obsidianRobotCost,
+                    Resources(obsidian = 1)
                 )
+                // assume we want to build obsidian as soon as possible
+//                if(robots.obsidian == 0) return listOf(stateIfWeBuild)
+                otherStates.add(stateIfWeBuild)
             }
 
-            val desiredGeodeRatio = blueprint.geodeRobotCost.obsidian / blueprint.geodeRobotCost.ore.toFloat()
-            val currentGeodeDeficit = desiredGeodeRatio - (robots.obsidian / robots.ore.toFloat())
-            val newGeodeDeficit = desiredGeodeRatio - (robots.obsidian + 1) / robots.ore.toFloat()
-            if(newGeodeDeficit < currentGeodeDeficit) {
-
-
+            if(resources >= blueprint.clayRobotCost) {
+                val stateIfWeBuild = nextState(
+                    blueprint.clayRobotCost,
+                    Resources(clay = 1)
+                )
+                otherStates.add(stateIfWeBuild)
             }
 
-//            if(resources >= blueprint.clayRobotCost) {
-//                options.add(CaveState(
-//                    resources - blueprint.clayRobotCost + robots,
-//                    robots + Resources(clay = 1)
-//                ))
-//            }
-//
-//            if(resources >= blueprint.oreRobotCost) {
-//                options.add(CaveState(
-//                    resources - blueprint.oreRobotCost + robots,
-//                    robots + Resources(ore = 1)
-//                ))
-//            }
-//
-//            options.add(CaveState(resources + robots, robots))
+            if(resources >= blueprint.oreRobotCost) {
+                otherStates.add(nextState(
+                    blueprint.oreRobotCost,
+                    Resources(ore = 1)
+                ))
+            }
 
-            return nextState(Resources(), null)
+            return otherStates
         }
 
-        fun nextState(costs: Resources, newRobots: Resources?) = CaveState(
+        fun nextState(costs: Resources? = null, newRobots: Resources? = null) = CaveState(
             resources - costs + robots,
             robots + newRobots
         )

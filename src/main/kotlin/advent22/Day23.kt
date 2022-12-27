@@ -72,7 +72,7 @@ class Day23 : AdventSolution(
             }.toSet()
             if(allTheSame) return elves to roundNumber
             initialDirectionIndex += 1
-//            printMap(elves)
+            printMap(elves)
             roundNumber += 1
         }
         return elves to roundNumber

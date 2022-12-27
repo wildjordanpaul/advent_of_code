@@ -31,8 +31,8 @@ data class Point(val x: Int = 0, val y: Int = 0) {
 
     fun navigate(char: Char, amount: Int = 1): Point {
         return when(char.uppercaseChar()) {
-            'N','U' -> above(amount)
-            'S','D' -> below(amount)
+            'N','U','^' -> above(amount)
+            'S','D','V' -> below(amount)
             'W','L','<' -> left(amount)
             'E','R','>' -> right(amount)
             else -> this
@@ -41,8 +41,8 @@ data class Point(val x: Int = 0, val y: Int = 0) {
 
     fun navigateAway(char: Char, amount: Int = 1): Point {
         return when(char.uppercaseChar()) {
-            'N','U' -> below(amount)
-            'S','D' -> above(amount)
+            'N','U','^' -> below(amount)
+            'S','D','V' -> above(amount)
             'W','L','<' -> right(amount)
             'E','R','>' -> left(amount)
             else -> this
@@ -51,7 +51,7 @@ data class Point(val x: Int = 0, val y: Int = 0) {
 
     fun navigate(path: String, amount: Int = 1): Point {
         var p = this
-        if (Regex("[NESWUDLR]+").matches(path.uppercase())) {
+        if (Regex("[NESWUDLRV^<>]+").matches(path.uppercase())) {
             path.forEach { p = p.navigate(it, amount) }
         } else {
             p = when(path.lowercase()) {
