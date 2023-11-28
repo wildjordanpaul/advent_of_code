@@ -34,7 +34,7 @@ data class Point3D(val x: Int = 0, val y: Int = 0, val z: Int = 0) {
     }
 
     companion object {
-        inline fun Iterable<Point3D>.boundaries(): Pair<Point3D, Point3D> {
+        fun Iterable<Point3D>.boundaries(): Pair<Point3D, Point3D> {
             val iterator = iterator()
             if (!iterator.hasNext()) throw NoSuchElementException()
             val first = iterator.next()

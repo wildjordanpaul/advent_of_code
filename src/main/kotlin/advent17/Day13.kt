@@ -27,7 +27,6 @@ class Day13 : AdventSolution(
     override fun solveProblem2(input: String): Any? {
         var (gen1, gen2) = input.trim().splitInTwo("\n") { it.trim().split(" ").last().toBigInteger() }
         val b1 = "16807".toBigInteger()
-        val b2 = "48271".toBigInteger()
         val r = "2147483647".toBigInteger()
         val count = (0 until 5_000_000).count {
             do {

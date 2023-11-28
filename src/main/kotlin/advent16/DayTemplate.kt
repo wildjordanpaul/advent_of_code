@@ -1,10 +1,9 @@
-package advent23
+package advent16
 
 import shared.AdventSolution
 
-class Day1 : AdventSolution(
+class DayTemplate : AdventSolution(
     mapOf("""
-        asdf
     """.trimIndent() to 1),
     1
 ) {

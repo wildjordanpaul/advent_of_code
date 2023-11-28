@@ -21,7 +21,6 @@ class Day14 : AdventSolution(
                 ?.also(blocked::add)
                 ?: return blocked.size - rockCount
         }
-        return null
     }
 
     override fun solveProblem2(input: String): Any? {

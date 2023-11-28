@@ -40,7 +40,7 @@ class Day12 : AdventSolution(
             val (k, v) = line.splitInTwo(" <-> ")
             k to v.split(", ").filter(String::isNotBlank)
         }
-        map.forEach { (k, v) ->
+        map.forEach { (k, _) ->
             if(groups.any { group -> group.contains(k) }) return@forEach
             val seen = mutableSetOf<String>()
             val queue = mutableSetOf(k)

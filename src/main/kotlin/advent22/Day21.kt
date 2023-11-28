@@ -128,8 +128,6 @@ class Day21 : AdventSolution(
             }
             i += 1
         }
-
-        return "oops"
     }
 
     private data class Pointer(val k1: String, val k2: String, val op: String)
