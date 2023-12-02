@@ -29,10 +29,10 @@ class Day1 : AdventSolution(
     }
 
     override fun solveProblem2(input: String): Any? {
-        val results = input.splitLines().map {
+        val results = input.splitLines().map { line ->
             val (first, last) = listOfNotNull(
-                    input.findAnyOf(DIGIT_WORDS + DIGIT_NUMBERS),
-                    input.findLastAnyOf(DIGIT_WORDS + DIGIT_NUMBERS)
+                line.findAnyOf(DIGIT_WORDS + DIGIT_NUMBERS),
+                line.findLastAnyOf(DIGIT_WORDS + DIGIT_NUMBERS)
             ).map {
                 val i = DIGIT_WORDS.indexOf(it.second)
                 if (i >= 0) i + 1
