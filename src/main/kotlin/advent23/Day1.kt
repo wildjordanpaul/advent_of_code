@@ -30,22 +30,21 @@ class Day1 : AdventSolution(
 
     override fun solveProblem2(input: String): Any? {
         val results = input.splitLines().map {
-            val (first, last) = it.toDigits()
+            val (first, last) = listOfNotNull(
+                    input.findAnyOf(DIGIT_WORDS + DIGIT_NUMBERS),
+                    input.findLastAnyOf(DIGIT_WORDS + DIGIT_NUMBERS)
+            ).map {
+                val i = DIGIT_WORDS.indexOf(it.second)
+                if (i >= 0) i + 1
+                else it.second.toInt()
+            }.ends()
             "$first$last".toInt()
         }
         return results.sum()
     }
 
-    private fun String.toDigits(): Pair<Int, Int> {
-        val words = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
-        val numbers = (1..9).map { it.toString() }
-        return listOfNotNull(
-                findAnyOf(words + numbers),
-                findLastAnyOf(words + numbers)
-        ).map {
-            val i = words.indexOf(it.second)
-            if (i >= 0) i + 1
-            else it.second.toInt()
-        }.ends()
+    companion object {
+        val DIGIT_WORDS = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
+        val DIGIT_NUMBERS = (1..9).map { it.toString() }
     }
 }
